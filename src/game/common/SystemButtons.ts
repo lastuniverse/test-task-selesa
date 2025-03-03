@@ -75,7 +75,6 @@ export class SystemButtons extends BaseController {
 		this.fullscreenButton.alpha = this.isFullscreen ? 0.0 : 0.7;
 		this.fullscreenOffButton.alpha = this.isF11Fullscreen ? 0.3 : 0.7; 
 		this.fullscreenOffButton.visible = this.isFullscreen;		
-
 	}
 
 	private enterFullscreen(element = document.documentElement) {
