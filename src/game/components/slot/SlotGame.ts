@@ -132,7 +132,7 @@ export class SlotGame extends BaseSlotGame {
 	}
 
 	protected override async completeSpin(data: IRequestSpinData) {
-		super.completeSpin(data)
+		await super.completeSpin(data)
 		this.spineBoy.idle(true);
 	}
 
