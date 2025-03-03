@@ -4,18 +4,19 @@
 
 - [Table of Contents](#table-of-contents)
 - [Status of Technical Task Completion and Implementation Comments](#status-of-technical-task-completion-and-implementation-comments)
-	- [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
-	- [Timings](#timings)
-	- [A Bit About the Game Architecture and Its Implementation Features](#a-bit-about-the-game-architecture-and-its-implementation-features)
-	- [Project Folder Structure (Omitting the Obvious)](#project-folder-structure-omitting-the-obvious)
-	- [A Few Shortcomings](#a-few-shortcomings)
-	- [Local Project Setup](#local-project-setup)
-	- [A Bit About Assets](#a-bit-about-assets)
-			- [Animated Component Data Format (Draft)](#animated-component-data-format-draft)
-			- [Concept](#concept)
-			- [Proposed Elements (Draft)](#proposed-elements-draft)
-			- [Requirements](#requirements)
-			- [Demo](#demo)
+  - [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
+  - [Timings](#timings)
+  - [A Bit About the Game Architecture and Its Implementation Features](#a-bit-about-the-game-architecture-and-its-implementation-features)
+  - [A Bit About Features Not Included in the Original Specification](#a-bit-about-features-not-included-in-the-original-specification)
+  - [Project Folder Structure (Omitting the Obvious)](#project-folder-structure-omitting-the-obvious)
+  - [A Few Shortcomings](#a-few-shortcomings)
+  - [Local Project Setup](#local-project-setup)
+  - [A Bit About Assets](#a-bit-about-assets)
+      - [Animated Component Data Format (Draft)](#animated-component-data-format-draft)
+      - [Concept](#concept)
+      - [Proposed Elements (Draft)](#proposed-elements-draft)
+      - [Requirements](#requirements)
+      - [Demo](#demo)
 
 # Status of Technical Task Completion and Implementation Comments
 
@@ -66,6 +67,10 @@ Project requirements:
 - As the main system timer (ticker), I chose the `gsap` timer. Everything is tied to it, from animation control to managing the internal timings of game components. I did this to have a single control point for all timings.
 - I used my own development—assets (ZIP archives containing media files and `json` data describing layer structures, their sprite content, and animation sets), a Pixi plugin for loading these assets, and a component for rendering these assets and their animations.
 
+## A Bit About Features Not Included in the Original Specification
+- Added mechanics for adaptive resizing of the game to fit the screen on window resizes.  
+- Added mechanics for pausing the game when the game tab is inactive.  
+- Added a button to enter and exit fullscreen mode.
 
 ## Project Folder Structure (Omitting the Obvious)
 - `./public` - Static files folder (game assets), took approximately 6 hours in total
