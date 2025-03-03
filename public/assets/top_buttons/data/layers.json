@@ -1,0 +1,17 @@
+[
+	{
+		"name": "root",
+		"children": [
+			{"type": "Container", "name": "buttons"}
+		]
+	},
+	{
+		"name": "buttons",
+		"children": [
+			{"type": "Sprite", "name": "music"},
+			{"type": "Sprite", "name": "sound"},
+			{"type": "Sprite", "name": "fullscreen_off"},
+			{"type": "Sprite", "name": "fullscreen"}
+		]
+	}	
+]

@@ -1,0 +1,44 @@
+[
+	{
+		"name": "root",
+		"scale": 1.2,
+		"children": [
+			{"type": "Container", "name": "main"}
+		]
+	},
+	{
+		"name": "main",
+		"position": {"x": -441, "y": -163},
+		"children": [
+			{"type": "Sprite", "name": "background"},
+			{"type": "Sprite", "name": "frame"},
+			{"type": "Container", "name": "reel1"},
+			{"type": "Container", "name": "reel2"},
+			{"type": "Container", "name": "reel3"}
+		]
+	},	
+	{
+		"name": "reel1",
+		"position": {"x": 39, "y": 35},
+		"mask": "reel_mask1",
+		"children": [
+			{"type": "Sprite", "name": "reel_mask1"}
+		]
+	},
+	{
+		"name": "reel2",
+		"position": {"x": 311, "y": 35},
+		"mask": "reel_mask2",
+		"children": [
+			{"type": "Sprite", "name": "reel_mask2"}
+		]
+	},
+	{
+		"name": "reel3",
+		"position": {"x": 581, "y": 35},
+		"mask": "reel_mask3",
+		"children": [
+			{"type": "Sprite", "name": "reel_mask3"}
+		]
+	}
+]

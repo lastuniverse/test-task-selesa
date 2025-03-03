@@ -1,0 +1,11 @@
+[
+	
+	{
+		"elements": [
+			{"name": "root", "type": "Container"}
+		],
+		"to": [
+			{"delay": 1, "duration": 1.0, "ease": "none", "pixi": { "alpha": 0.0}}
+		]
+	}
+]

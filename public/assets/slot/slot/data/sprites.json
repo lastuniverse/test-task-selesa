@@ -1,0 +1,28 @@
+[
+	{
+		"name": "background",
+		"texture": "background",
+		"scale": 1.429,
+		"alpha": 0.7
+	},
+	{
+		"name": "panel",
+		"texture": "panel"
+	},
+	{
+		"name": "spin_button_down",
+		"texture": "spin_button_down"
+	},
+	{
+		"name": "spin_button_up",
+		"texture": "spin_button_up"
+	},
+	{
+		"name": "bet_button_down",
+		"texture": "bet_button_down"
+	},
+	{
+		"name": "bet_button_up",
+		"texture": "bet_button_up"
+	}	
+]

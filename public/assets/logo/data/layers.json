@@ -1,0 +1,29 @@
+[
+	{
+		"name": "root",
+		"position": { "x": 960, "y": 540 },
+		"children": [
+			{"type": "Container", "name": "main"},
+			{"type": "Container", "name": "spiner"}
+		]
+	},
+	{
+		"name": "main",
+		"position": { "x": -960, "y": -540 },
+		"children": [
+			{"type": "Sprite", "name": "background"}
+		]
+	},
+	{
+		"name": "spiner",
+		"scale": 0.7,
+		"position": { "x": 8, "y": 350 },
+		"children": [
+			{"type": "Sprite", "name": "sun1"},
+			{"type": "Sprite", "name": "sun2"},
+			{"type": "Sprite", "name": "sun3"},
+			{"type": "Sprite", "name": "sun4"},
+			{"type": "Sprite", "name": "sun5"}
+		]
+	}
+]

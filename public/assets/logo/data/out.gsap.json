@@ -1,0 +1,52 @@
+[
+	
+	{
+		"elements": [
+			{"name": "root", "type": "Container"}
+		],
+		"to": [
+			{"delay": 1, "duration": 1.0, "ease": "none", "pixi": { "alpha": 0.0}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun1", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 1.0, "ease": "power1.inOut", "pixi": { "scale": 0.1}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun2", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 1.0, "ease": "power1.inOut", "pixi": { "scale": 0.2}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun3", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 1.0, "ease": "power1.inOut", "pixi": { "scale": 0.3}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun4", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 1.0, "ease": "power1.inOut", "pixi": { "scale": 0.2}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun5", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 1.0, "ease": "power1.inOut", "pixi": { "scale": 0.1}}
+		]
+	}
+
+]

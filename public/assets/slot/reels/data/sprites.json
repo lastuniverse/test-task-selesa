@@ -1,0 +1,34 @@
+[
+	{
+		"name": "background",
+		"texture": "reels_background"
+	},
+	{
+		"name": "frame",
+		"texture": "reels_frame"
+	},
+	{
+		"name": "reel_mask1",
+		"texture": "reels_mask",
+		"alpha": 0.3,
+		"position": { "x": 0, "y": 0 },
+		"width": 257,
+		"height": 257
+	},
+	{
+		"name": "reel_mask2",
+		"texture": "reels_mask",
+		"alpha": 0.3,
+		"position": { "x": 0, "y": 0 },
+		"width": 257,
+		"height": 257
+	},
+	{
+		"name": "reel_mask3",
+		"texture": "reels_mask",
+		"alpha": 0.3,
+		"position": { "x": 0, "y": 0 },
+		"width": 257,
+		"height": 257
+	}
+]

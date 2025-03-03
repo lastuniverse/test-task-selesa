@@ -1,0 +1,28 @@
+[
+	{
+		"name": "music",
+		"texture": "music",
+		"visible": false,
+		"alpha": 0.7,
+		"position": {"x": -768, "y": 0}
+	},
+	{
+		"name": "sound",
+		"texture": "sound",
+		"alpha": 0.7,		
+		"position": {"x": -512, "y": 0}
+	},
+	{
+		"name": "fullscreen",
+		"texture": "fullscreen",
+		"alpha": 0.7,
+		"position": {"x": -256, "y": 0}
+	},
+	{
+		"name": "fullscreen_off",
+		"texture": "fullscreen_off",
+		"visible": false,
+		"alpha": 0.7,
+		"position": {"x": -256, "y": 0}
+	}	
+]

@@ -1,0 +1,66 @@
+[
+	{
+		"name": "symbol_00",
+		"texture": "symbol_00"
+	},
+	{
+		"name": "symbol_01",
+		"texture": "symbol_01"
+	},
+	{
+		"name": "symbol_02",
+		"texture": "symbol_02"
+	},
+	{
+		"name": "symbol_03",
+		"texture": "symbol_03"
+	},
+	{
+		"name": "symbol_04",
+		"texture": "symbol_04"
+	},
+	{
+		"name": "symbol_05",
+		"texture": "symbol_05"
+	},
+	{
+		"name": "symbol_06",
+		"texture": "symbol_06"
+	},
+	{
+		"name": "symbol_07",
+		"texture": "symbol_07"
+	},
+	{
+		"name": "symbol_08",
+		"texture": "symbol_08"
+	},
+	{
+		"name": "symbol_09",
+		"texture": "symbol_09"
+	},
+	{
+		"name": "symbol_10",
+		"texture": "symbol_10"
+	},
+	{
+		"name": "symbol_11",
+		"texture": "symbol_11"
+	},
+	{
+		"name": "symbol_12",
+		"texture": "symbol_12"
+	},
+	{
+		"name": "symbol_13",
+		"texture": "symbol_13"
+	},
+	{
+		"name": "symbol_14",
+		"texture": "symbol_14"
+	},
+	{
+		"name": "symbol_15",
+		"texture": "symbol_15"
+	}
+]

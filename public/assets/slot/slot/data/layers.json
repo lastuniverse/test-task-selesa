@@ -1,0 +1,76 @@
+[
+	{
+		"name": "root",
+		"children": [
+			{"type": "Sprite", "name": "background"},
+			{"type": "Container", "name": "reels"},
+			{"type": "Container", "name": "panel"},
+			{"type": "Container", "name": "spine_boy"},
+			{"type": "Container", "name": "overlay"}
+		]
+	},
+	{
+		"name": "reels",
+		"position": {"x": 960, "y": 540},
+		"children": [
+		]
+	},
+	{
+		"name": "panel",
+		"position": {"x": 377, "y": 900},
+		"children": [
+			{"type": "Sprite", "name": "panel"},
+			{"type": "Container", "name": "balance"},
+			{"type": "Container", "name": "player"},
+			{"type": "Container", "name": "bet"},
+			{"type": "Container", "name": "spin_button"},
+			{"type": "Container", "name": "bet_button"}			
+		]
+	},
+	{
+		"name": "balance",
+		"position": {"x": 286, "y": 90},
+		"children": [
+		]
+	},
+	{
+		"name": "player",
+		"position": {"x": 573, "y": 39},
+		"children": [
+		]
+	},
+	{
+		"name": "bet",
+		"position": {"x": 870, "y": 90},
+		"children": [
+		]
+	},
+	{
+		"name": "spin_button",
+		"position": {"x": 461, "y": 69},
+		"children": [
+			{"type": "Sprite", "name": "spin_button_down"},
+			{"type": "Sprite", "name": "spin_button_up"}
+		]
+	},
+	{
+		"name": "bet_button",
+		"position": {"x": 1023, "y": 33},
+		"children": [
+			{"type": "Sprite", "name": "bet_button_down"},
+			{"type": "Sprite", "name": "bet_button_up"}
+		]
+	},
+	{
+		"name": "spine_boy",
+		"position": {"x": 1700, "y": 731},
+		"scale": {"x": -0.3, "y": 0.3},
+		"children": [
+		]
+	},
+	{
+		"name": "overlay",
+		"children": [
+		]
+	}	
+]

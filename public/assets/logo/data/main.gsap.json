@@ -1,0 +1,43 @@
+[
+	{
+		"elements": [
+			{"name": "sun1", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 0, "duration": 2.0, "repeat": -1, "yoyoEase": true, "ease": "power1.inOut", "pixi": { "scale": 1.0}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun2", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 0.4, "duration": 2.0, "repeat": -1, "yoyoEase": true, "ease": "power1.inOut", "pixi": { "scale": 1.1}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun3", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 0.8, "duration": 2.0, "repeat": -1, "yoyoEase": true, "ease": "power1.inOut", "pixi": { "scale": 1.2}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun4", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 1.2, "duration": 2.0, "repeat": -1, "yoyoEase": true, "ease": "power1.inOut", "pixi": { "scale": 1.1}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun5", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 1.6, "duration": 2.0, "repeat": -1, "yoyoEase": true, "ease": "power1.inOut", "pixi": { "scale": 1.0}}
+		]
+	}
+
+]

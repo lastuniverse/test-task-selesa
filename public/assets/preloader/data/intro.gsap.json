@@ -1,0 +1,122 @@
+[
+	{
+		"elements": [
+			{"name": "sun", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 2, "duration": 12, "pixi": { "y": 300}},
+			{"delay": 1, "duration": 4, "pixi": { "blur": 0}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "background", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 15, "pixi": { "y": -1024}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sky", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 2, "duration": 18, "pixi": { "alpha": 0.4}},
+			{"delay": 2, "duration": 8, "pixi": { "blur": 2}},
+			{"delay": 3, "duration": 15, "pixi": { "tint": "rgb(255,255,255)"}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "cloud1", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 5, "repeat": -1, "ease": "none", "pixi": { "x": -1200}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "cloud2", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 9, "repeat": -1, "ease": "none", "pixi": { "x": -1700}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "cloud3", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 7, "repeat": -1, "ease": "none", "pixi": { "x": -900}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "cloud4", "type": "Sprite"}
+		],
+		"to": [
+			{"duration": 11, "repeat": -1, "ease": "none", "pixi": { "x": -900}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "fudzi", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 3, "duration": 15, "pixi": { "tint": "rgb(255,255,255)"}},
+			{"delay": 1, "duration": 3, "pixi": { "blur": 0}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sakura", "type": "Container"}
+		],
+		"to": [
+			{"delay": 3, "duration": 14, "pixi": { "tint": "rgb(255,255,255)"}},
+			{"delay": 3, "duration": 10, "pixi": { "blur": 20}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "farClouds", "type": "Container"},
+			{"name": "nearClouds", "type": "Container"}
+		],
+		"to": [
+			{"delay": 2, "duration": 10, "pixi": { "alpha": 0.85}},
+			{"delay": 2, "duration": 8, "pixi": { "blur": 16}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "round_mask", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 12, "duration": 2, "ease": "power4.out", "pixi": { "width": 383, "height": 383, "x": 85, "y": -88}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "intro", "type": "Container"}
+		],
+		"to": [
+			{"delay": 14, "duration": 2, "ease": "power4.out", "pixi": { "angle": -360, "x": -212, "y": 30, "scale": 0.31}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "sun_logo", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 14, "duration": 2, "ease": "power4.out", "pixi": { "alpha": 1}}
+		]
+	},
+	{
+		"elements": [
+			{"name": "final", "type": "Sprite"}
+		],
+		"to": [
+			{"delay": 16, "duration": 4, "pixi": { "alpha": 1}}
+		]
+	}
+	
+]

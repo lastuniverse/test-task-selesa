@@ -1,0 +1,94 @@
+[
+	{
+		"name": "background",
+		"texture": "background",
+		"width": 2048,
+		"height": 2048
+	},
+	{
+		"name": "sky",
+		"texture": "sky",
+		"tint": "#000033",
+		"blur": 20,
+		"alpha": 0.1
+	},
+	{
+		"name": "sun",
+		"texture": "sun",
+		"blur": 20,
+		"position": { "x": 920, "y": 490 }
+	},
+	{
+		"name": "cloud1",
+		"texture": "clouds/cloud1",
+		"position": { "x": 1920, "y": 370 }
+	},
+	{
+		"name": "cloud3",
+		"texture": "clouds/cloud3",
+		"position": { "x": 2120, "y": 412 }
+	},
+	{
+		"name": "cloud2",
+		"texture": "clouds/cloud2",
+		"position": { "x": 2220, "y": 92 }
+	},
+	{
+		"name": "cloud4",
+		"texture": "clouds/cloud4",
+		"position": { "x": 2320, "y": 332 }
+	},
+	{
+		"name": "fudzi",
+		"texture": "fudzi",
+		"blur": 15,
+		"tint": "#000033"
+	},
+	{
+		"name": "sakura1",
+		"texture": "sakura/sakura1",
+		"position": { "x": 0, "y": 0 }
+	},
+	{
+		"name": "sakura2",
+		"texture": "sakura/sakura2",
+		"position": { "x": 0, "y": 908 }
+	},
+	{
+		"name": "sakura3",
+		"texture": "sakura/sakura3",
+		"position": { "x": 1213, "y": 118 }
+	},
+	{
+		"name": "sakura4",
+		"texture": "sakura/sakura4",
+		"position": { "x": 1608, "y": -120 }
+	},
+	{
+		"name": "sakura5",
+		"texture": "sakura/sakura5",
+		"position": { "x": 0, "y": 0 }
+	},
+	{
+		"name": "sun_logo",
+		"texture": "sun_logo",
+		"alpha": 0.0,
+		"anchor": 0.5,
+		"position": { "x": 85, "y": -88 }
+	},	
+	{
+		"name": "final",
+		"texture": "final",
+		"alpha": 0.0,
+		"anchor": 0.5
+	},	
+	{
+		"name": "round_mask",
+		"texture": "round_mask",
+		"anchor": 0.5,
+		"alpha": 0.3,
+		"position": { "x": 0, "y": 0 },
+		"width": 2304,
+		"height": 2304
+	}
+]

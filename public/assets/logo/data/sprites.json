@@ -1,0 +1,42 @@
+[
+	{
+		"name": "background",
+		"texture": "background"
+	},
+	{
+		"name": "sun1",
+		"texture": "sun",
+		"position": { "x": -200, "y": 0 },
+		"anchor": 0.5,
+		"scale": 0.5,
+		"blur": 0.2
+	},
+	{
+		"name": "sun2",
+		"texture": "sun",
+		"position": { "x": -100, "y": 0 },
+		"anchor": 0.5,
+		"scale": 0.5
+	},
+	{
+		"name": "sun3",
+		"texture": "sun",
+		"position": { "x": 0, "y": 0 },
+		"anchor": 0.5,
+		"scale": 0.5
+	},
+	{
+		"name": "sun4",
+		"texture": "sun",
+		"position": { "x": 100, "y": 0 },
+		"anchor": 0.5,
+		"scale": 0.5
+	},
+	{
+		"name": "sun5",
+		"texture": "sun",
+		"position": { "x": 200, "y": 0 },
+		"anchor": 0.5,
+		"scale": 0.5
+	}
+]

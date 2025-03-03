@@ -1,0 +1,73 @@
+[
+	{
+		"name": "root",
+		"position": { "x": 960, "y": 540 },
+		"children": [
+			{"type": "Container", "name": "intro"},
+			{"type": "Sprite", "name": "final"}
+		]
+	},
+	{
+		"name": "intro",
+		"mask": "round_mask",
+		"children": [
+			{"type": "Container", "name": "main"},
+			{"type": "Sprite", "name": "round_mask"},
+			{"type": "Sprite", "name": "sun_logo"}
+		]
+	},
+	{
+		"name": "main",
+		"position": { "x": -1024, "y": -576 },
+		"children": [
+			{"type": "Container", "name": "sky"},
+			{"type": "Container", "name": "farClouds"},
+			{"type": "Container", "name": "ground"},
+			{"type": "Container", "name": "nearClouds"},
+			{"type": "Container", "name": "sakura"}
+		]
+	},
+	{
+		"name": "sky",
+		"children": [
+			{"type": "Sprite", "name": "background"},
+			{"type": "Sprite", "name": "sky"},
+			{"type": "Sprite", "name": "sun"}
+		]
+	},
+	{
+		"name": "farClouds",
+		"blur": 20,
+		"alpha": 0.1,
+		"children": [
+			{"type": "Sprite", "name": "cloud2"},
+			{"type": "Sprite", "name": "cloud4"}
+		]
+	},
+	{
+		"name": "ground",
+		"children": [
+			{"type": "Sprite", "name": "fudzi"}
+		]
+	},
+	{
+		"name": "nearClouds",
+		"blur": 20,
+		"alpha": 0.1,
+		"children": [
+			{"type": "Sprite", "name": "cloud1"},
+			{"type": "Sprite", "name": "cloud3"}
+		]
+	},
+	{
+		"name": "sakura",
+		"tint": "#332244",
+		"children": [
+			{"type": "Sprite", "name": "sakura1"},
+			{"type": "Sprite", "name": "sakura2"},
+			{"type": "Sprite", "name": "sakura3"},
+			{"type": "Sprite", "name": "sakura4"},
+			{"type": "Sprite", "name": "sakura5"}
+		]
+	}	
+]
