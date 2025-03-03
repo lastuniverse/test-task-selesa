@@ -4,7 +4,11 @@
 
 - [Table of Contents](#table-of-contents)
 - [Status of Technical Task Completion and Implementation Comments](#status-of-technical-task-completion-and-implementation-comments)
-    - [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
+  - [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
+    - [Game must include those screens:](#game-must-include-those-screens)
+    - [Game play:](#game-play)
+    - [Other game features:](#other-game-features)
+    - [Project requirements:](#project-requirements)
 - [Timings](#timings)
 - [A Bit About the Game Architecture and Its Implementation Features](#a-bit-about-the-game-architecture-and-its-implementation-features)
 - [A little about what was not in the specification](#a-little-about-what-was-not-in-the-specification)
@@ -20,9 +24,9 @@
 
 ## Status of Technical Task Completion and Implementation Comments
 
-#### TT - Create a simple HTML5 slot game using Phaser3/Pixi.js
+### TT - Create a simple HTML5 slot game using Phaser3/Pixi.js
 
-Game must include those screens:
+#### Game must include those screens:
 - [x] Preload screen
 - [x] Assets loading screen with progress bar
 - [x] Main game scene screen
@@ -32,7 +36,7 @@ Game must include those screens:
 - [x] Spin button
 - [x] Spine animated object
 
-Game play:
+#### Game play:
 - [x] Slot has 3 reels and 1 row, example (https://t.ly/fU5eR):
 - [x] Slot has 3 different symbols
 - [x] After spin button clicked reels start spinning 
@@ -40,11 +44,11 @@ Game play:
 - [x] If result has all 3 same symbols - its a win, play win sound and animation
 - [x] Include some Spine animation in the main game scene, make game events like win/lose trigger different states of Spine animation (there can be used any Spine animation you will find, for example this goblin from Phaser examples - https://github.com/yandeu/phaser3-spine-example/tree/master)
 
-Other game features:
+#### Other game features:
 - [x] Play in loop some background sound
 - [x] Add control to turn on/off all sounds
 
-Project requirements:
+#### Project requirements:
 - [x] Setup this game project on GitHub (or other GIT service).
 - [x] Use TypeScript as programming language for the project
 - [ ] Use Webpack to bundle modules, assets and serve game for local development. **(used Vite instead - can switch to Webpack if required)**
