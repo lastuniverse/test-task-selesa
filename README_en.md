@@ -1,26 +1,26 @@
 [русская версия](./README.md)
 
-# Table of Contents
+## Table of Contents
 
 - [Table of Contents](#table-of-contents)
 - [Status of Technical Task Completion and Implementation Comments](#status-of-technical-task-completion-and-implementation-comments)
-  - [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
-  - [Timings](#timings)
-  - [A Bit About the Game Architecture and Its Implementation Features](#a-bit-about-the-game-architecture-and-its-implementation-features)
-  - [A little about what was not in the specification](#a-little-about-what-was-not-in-the-specification)
-  - [Project Folder Structure (Omitting the Obvious)](#project-folder-structure-omitting-the-obvious)
-  - [A Few Shortcomings](#a-few-shortcomings)
-  - [Local Project Setup](#local-project-setup)
-  - [A Bit About Assets](#a-bit-about-assets)
-      - [Animated Component Data Format (Draft)](#animated-component-data-format-draft)
-      - [Concept](#concept)
-      - [Proposed Elements (Draft)](#proposed-elements-draft)
-      - [Requirements](#requirements)
-      - [Demo](#demo)
+    - [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
+- [Timings](#timings)
+- [A Bit About the Game Architecture and Its Implementation Features](#a-bit-about-the-game-architecture-and-its-implementation-features)
+- [A little about what was not in the specification](#a-little-about-what-was-not-in-the-specification)
+- [Project Folder Structure (Omitting the Obvious)](#project-folder-structure-omitting-the-obvious)
+- [A Few Shortcomings](#a-few-shortcomings)
+- [Local Project Setup](#local-project-setup)
+- [A Bit About Assets](#a-bit-about-assets)
+    - [Animated Component Data Format (Draft)](#animated-component-data-format-draft)
+    - [Concept](#concept)
+    - [Proposed Elements (Draft)](#proposed-elements-draft)
+    - [Requirements](#requirements)
+    - [Demo](#demo)
 
-# Status of Technical Task Completion and Implementation Comments
+## Status of Technical Task Completion and Implementation Comments
 
-## TT - Create a simple HTML5 slot game using Phaser3/Pixi.js
+#### TT - Create a simple HTML5 slot game using Phaser3/Pixi.js
 
 Game must include those screens:
 - [x] Preload screen
