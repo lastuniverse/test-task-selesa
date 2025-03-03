@@ -7,7 +7,7 @@ import { SpineBoy } from "../spine/SpineBoy";
 import { IRequestSpinData } from "../../network/GameProxy";
 import { BaseGame } from "../../../core/BaseGame";
 import { BaseSlotGame } from "./BaseSlotGame";
-import { gsapSleep, gsapTimeout } from "../../../core/utils/sleep";
+import { gsapSleep } from "../../../core/utils/sleep";
 
 export class SlotGame extends BaseSlotGame {
 	protected componentView!: Component;
@@ -181,7 +181,6 @@ export class SlotGame extends BaseSlotGame {
 						resolve();
 					}
 				});
-
 			});
 
 			promises.push(promise);

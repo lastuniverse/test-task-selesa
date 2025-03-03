@@ -18,8 +18,6 @@ export class Game extends BaseGame {
 		this.logo = new Logo();
 		await this.logo.preload();
 		await this.logo.init();
-
-
 	}
 
 	public async start() {

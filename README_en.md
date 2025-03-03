@@ -7,7 +7,7 @@
   - [TT - Create a simple HTML5 slot game using Phaser3/Pixi.js](#tt---create-a-simple-html5-slot-game-using-phaser3pixijs)
   - [Timings](#timings)
   - [A Bit About the Game Architecture and Its Implementation Features](#a-bit-about-the-game-architecture-and-its-implementation-features)
-  - [A Bit About Features Not Included in the Original Specification](#a-bit-about-features-not-included-in-the-original-specification)
+  - [A little about what was not in the specification](#a-little-about-what-was-not-in-the-specification)
   - [Project Folder Structure (Omitting the Obvious)](#project-folder-structure-omitting-the-obvious)
   - [A Few Shortcomings](#a-few-shortcomings)
   - [Local Project Setup](#local-project-setup)
@@ -67,10 +67,14 @@ Project requirements:
 - As the main system timer (ticker), I chose the `gsap` timer. Everything is tied to it, from animation control to managing the internal timings of game components. I did this to have a single control point for all timings.
 - I used my own development—assets (ZIP archives containing media files and `json` data describing layer structures, their sprite content, and animation sets), a Pixi plugin for loading these assets, and a component for rendering these assets and their animations.
 
-## A Bit About Features Not Included in the Original Specification
-- Added mechanics for adaptive resizing of the game to fit the screen on window resizes.  
-- Added mechanics for pausing the game when the game tab is inactive.  
-- Added a button to enter and exit fullscreen mode.
+## A little about what was not in the specification  
+- Added mechanics for adaptive resizing of the game to fit the screen during resizes  
+- Added mechanics for pausing the game when the game tab is inactive  
+- Added a button to enter and exit fullscreen mode  
+- Added a button to change the bet  
+- Reel spinning is implemented in two stages *(this is done to ensure the timely start of reel spinning when pressing the spin button, even in case of significant network delays)*:  
+  - Idle infinite spinning while waiting for the server response with the spin result  
+  - Spinning to the result after receiving the server response with the spin result  
 
 ## Project Folder Structure (Omitting the Obvious)
 - `./public` - Static files folder (game assets), took approximately 6 hours in total
