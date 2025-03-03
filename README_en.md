@@ -67,7 +67,7 @@
 
 ## A Bit About the Game Architecture and Its Implementation Features
 - Stack: `vite`, `typescript`, `pixi 8`, `gsap`
-- I decided to experiment a little with the architecture by fully implementing the state management process using `async`/`await`. I think the experiment turned out successful—the logic for scheduling and launching asynchronous components, as well as managing their state transitions, has been significantly simplified (subjectively speaking).
+- I decided to experiment a bit with the architecture by fully implementing the state management process using `async` and `await`. I believe the experiment turned out to be successful—the logic for scheduling and launching asynchronous components, as well as managing their state transitions, has become significantly simpler. To achieve this, all game controllers inherit from `BaseController`, which has asynchronous `preload` and `init` methods. We follow the rule that all initialization dependent on the results of the `preload` method is done strictly within the `init` method, and we adhere to this rule consistently. This approach allows for intuitive management of component readiness processes and greatly simplifies code comprehension when working with such asynchronous logic (*subjective opinion*).
 - As the main system timer (ticker), I chose the `gsap` timer. Everything is tied to it, from animation control to managing the internal timings of game components. I did this to have a single control point for all timings.
 - I used my own development—assets (ZIP archives containing media files and `json` data describing layer structures, their sprite content, and animation sets), a Pixi plugin for loading these assets, and a component for rendering these assets and their animations.
 
