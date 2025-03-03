@@ -73,7 +73,9 @@ export class SystemButtons extends BaseController {
 		if(!this.componentView) return;
 		console.log('isFullscreen', this.isFullscreen);
 		this.fullscreenButton.alpha = this.isFullscreen ? 0.0 : 0.7;
+		this.fullscreenOffButton.alpha = this.isF11Fullscreen ? 0.3 : 0.7; 
 		this.fullscreenOffButton.visible = this.isFullscreen;		
+
 	}
 
 	private enterFullscreen(element = document.documentElement) {
@@ -124,7 +126,7 @@ export class SystemButtons extends BaseController {
 	}	
 
 	public updateResize(scaleX: number, scaleY: number) {
-		var multiplier = this.isMobile ? 1.0 : 0.6;
+		var multiplier = this.isMobile ? 3.0 : 0.6;
 
 		this.buttons?.scale.set(
 			scaleX * multiplier,
