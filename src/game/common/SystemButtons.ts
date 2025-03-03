@@ -125,7 +125,7 @@ export class SystemButtons extends BaseController {
 	}	
 
 	public updateResize(scaleX: number, scaleY: number) {
-		var multiplier = this.isMobile ? 3.0 : 0.6;
+		var multiplier = this.isMobile ? 1.2 : 0.6;
 
 		this.buttons?.scale.set(
 			scaleX * multiplier,
@@ -135,16 +135,15 @@ export class SystemButtons extends BaseController {
 		this.updateFullscreenButton();
 	}
 
-	get isMobile(): boolean {
-		const userAgent = navigator.userAgent;
-		const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-		return (
-			/Mobile|Android|iPhone|iPad|iPod|Windows Phone|webOS|BlackBerry/i.test(userAgent) &&
-			isTouchDevice &&
-			window.matchMedia("(max-width: 768px)").matches
-		);
-	};
+	get isMobile(): boolean {
+		const userAgent = navigator.userAgent.toLowerCase();
+		const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+		const isMobileUserAgent = /mobile|android|iphone|ipad|ipod|windows phone|webos|blackberry/.test(userAgent);
+		const isSmallScreen = window.innerWidth <= 768; // пока нет уверености в необходимости isSmallScreen
+	
+		return isMobileUserAgent && isTouchDevice;
+	}	
 
 	public override async start(): Promise<void> { }
 
