@@ -71,6 +71,10 @@ export class Game extends BaseGame {
 		this.logo?.destroy();
 		this.preloader?.destroy();
 		this.slot?.destroy();
+		
+		this.logo = null;
+		this.preloader = null;
+		this.slot = null;
 		super.destroy();
 	}
 }
