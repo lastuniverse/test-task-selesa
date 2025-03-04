@@ -1,4 +1,4 @@
-import { Assets, Container } from "pixi.js";
+import { Assets } from "pixi.js";
 import { BaseController } from "../../../core/commons/BaseController.ts";
 import { Component } from "../../../core/components/Component.ts";
 import { ProgressBar } from "../progress_bar/ProgressBar.ts";
@@ -58,7 +58,7 @@ export class Preloader extends BaseController {
 		 * Пока не вижу как это сделать красиво и быстро для PIXI 8
 		 */
 
-		const currentAmount = Object.values(Assets.loader.promiseCache).length;
+		const startAmount = Object.values(Assets.loader.promiseCache).length;
 
 		startWatchingLoads();
 
@@ -69,9 +69,9 @@ export class Preloader extends BaseController {
 		const updateProgress = async (promise: Promise<any>) => {
 			await promise;
 			count++;
-			const progress = Math.min(1, (count-currentAmount) / (amount-currentAmount));
-			console.log("custom progress", progress, (count-currentAmount), (amount-currentAmount), count, amount)
-
+			const progress = Math.max(0,Math.min(1, (count-startAmount) / (amount-startAmount)));
+			if(progress===0) return;
+			console.log("custom progress", (progress * 100).toFixed(0), (count-startAmount), (amount-startAmount));
 			this.progressBar.setProgress(progress);
 		}
 
