@@ -12,7 +12,7 @@ export class SlotReel extends BaseSlotReel {
 	protected soundComplete!: HTMLAudioElement;
 
 	public override async preload() {
-		const resources = await Assets.load({ alias: 'symbols', src: './assets/slot/reel.asset' });
+		const resources = await Assets.load({ alias: "symbols", src: "./assets/slot/reel.asset" });
 		this.resources = new ComponentResources(resources);
 	}
 
@@ -22,14 +22,14 @@ export class SlotReel extends BaseSlotReel {
 			motionBlur: 16
 		});
 
-		this.soundSpin = this.resources.getSound('reel_spin').cloneNode(true) as HTMLAudioElement;
+		this.soundSpin = this.resources.getSound("reel_spin").cloneNode(true) as HTMLAudioElement;
 		this.soundSpin.volume = 0.3;
-		this.soundSpinStart = this.resources.getSound('reel_spin_start').cloneNode(true) as HTMLAudioElement;
+		this.soundSpinStart = this.resources.getSound("reel_spin_start").cloneNode(true) as HTMLAudioElement;
 		this.soundSpinStart.volume = 0.3;
-		this.soundSpinLoop = this.resources.getSound('reel_spin_loop').cloneNode(true) as HTMLAudioElement;
+		this.soundSpinLoop = this.resources.getSound("reel_spin_loop").cloneNode(true) as HTMLAudioElement;
 		this.soundSpinLoop.volume = 0.3;
 
-		this.soundComplete = this.resources.getSound('spin_complete').cloneNode(true) as HTMLAudioElement;
+		this.soundComplete = this.resources.getSound("spin_complete").cloneNode(true) as HTMLAudioElement;
 	}
 
 

@@ -12,7 +12,6 @@ export class Game extends BaseGame {
 	private preloader: Preloader | null = null;
 	private slot!: SlotGame;
 
-
 	async init(parentElementId: string, pixiOptions: Partial<ApplicationOptions> = {}) {
 		await super.init(parentElementId, pixiOptions);
 		this.logo = new Logo();

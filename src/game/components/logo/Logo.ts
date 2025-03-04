@@ -11,21 +11,21 @@ export class Logo extends BaseController {
 
 	public override async preload() {
 		await Assets.load([
-			{ alias: 'logo', src: './assets/logo.asset' }
+			{ alias: "logo", src: "./assets/logo.asset" }
 		]);
 	}
 
 	public override async init() {
-		this.componentView = Component.from('logo');
+		this.componentView = Component.from("logo");
 	}
 
 	public override async start(): Promise<void> {
-		await this.componentView.playAnimation('main');
+		await this.componentView.playAnimation("main");
 	}
 
 	public override async stop(): Promise<void> {
-		this.componentView.pauseAnimation('main');
-		await this.componentView.playAnimation('out');
+		this.componentView.pauseAnimation("main");
+		await this.componentView.playAnimation("out");
 		this.componentView.stopAnimation();
 	}
 

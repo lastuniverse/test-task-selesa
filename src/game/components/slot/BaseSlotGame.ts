@@ -32,15 +32,15 @@ export class BaseSlotGame extends BaseController {
 	}
 
 	protected createReels(): BaseSlotReels {
-		throw new Error('The method "createReel" does nothing, override it in the inheritor');
+		throw new Error("The method 'createReel' does nothing, override it in the inheritor");
 	}
 
 	protected initializeUI() {
-		throw new Error('The method "initializeUI" does nothing, override it in the inheritor');
+		throw new Error("The method 'initializeUI' does nothing, override it in the inheritor");
 	}
 
 	protected updateUI() {
-		throw new Error('The method "updateUI" does nothing, override it in the inheritor');
+		throw new Error("The method 'updateUI' does nothing, override it in the inheritor");
 	}
 
 	protected setBet(value: number) {
@@ -70,7 +70,7 @@ export class BaseSlotGame extends BaseController {
 		this.isRunning = true;
 
 		const spinData = GameProxy.requestSpinData(this.betIndex);
-		spinData.then(data => console.log('spinData', data));
+		spinData.then(data => console.log("spinData", data));
 
 		await this.beforeSpinAnimations();
 

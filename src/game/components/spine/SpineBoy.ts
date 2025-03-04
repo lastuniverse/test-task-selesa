@@ -7,14 +7,13 @@ export class SpineBoy {
 
     constructor(){
 	    this.view = new Container();
-
     }
 
 	async init() {
 		await this.preload();
         this.spine = Spine.from({
-            skeleton: 'spineSkeleton',
-            atlas: 'spineAtlas',
+            skeleton: "spineSkeleton",
+            atlas: "spineAtlas",
         });
 
         this.view.addChild(this.spine);
@@ -23,40 +22,35 @@ export class SpineBoy {
 	}
 
 	async preload() {
-		// const assets = [
-		// 	{ alias: 'spineBoySkeleton', src: '/assets/samples/spine/spineBoy/spineboy-pma.skel', },
-		// 	{ alias: 'spineBoyAtlas', src: '/assets/samples/spine/spineBoy/spineboy-pma.atlas', },
-		// ];
-		// await Assets.load(assets);
 		await Assets.load([
-			{ alias: 'spineSkeleton',	src: 'https://raw.githubusercontent.com/pixijs/spine-v8/main/examples/assets/spineboy-pro.skel'},
-			{ alias: 'spineAtlas',src: 'https://raw.githubusercontent.com/pixijs/spine-v8/main/examples/assets/spineboy-pma.atlas'},
-			{ alias: 'platform', src: 'https://pixijs.com/assets/tutorials/spineboy-adventure/platform.png' },
+			{ alias: "spineSkeleton",	src: "https://raw.githubusercontent.com/pixijs/spine-v8/main/examples/assets/spineboy-pro.skel"},
+			{ alias: "spineAtlas",src: "https://raw.githubusercontent.com/pixijs/spine-v8/main/examples/assets/spineboy-pma.atlas"},
+			{ alias: "platform", src: "https://pixijs.com/assets/tutorials/spineboy-adventure/platform.png" },
 		]);		
 	}
 
     public async spawn(){
-		await this.playAnimation('portal');
+		await this.playAnimation("portal");
     }
 
 	public async jump(isLooped: boolean = false){
-		await this.playAnimation('jump', isLooped, 1.5);
+		await this.playAnimation("jump", isLooped, 1.5);
     }
 
 	public hover(isLooped: boolean = false){
-		this.playAnimation('hoverboard', isLooped, 1.5);
+		this.playAnimation("hoverboard", isLooped, 1.5);
     }
 
 	public run(isLooped: boolean = false){
-		this.playAnimation('run', isLooped);
+		this.playAnimation("run", isLooped);
     }
 
 	public walk(isLooped: boolean = false){
-		this.playAnimation('walk', isLooped);
+		this.playAnimation("walk", isLooped);
     }
 
 	public idle(isLooped: boolean = false){
-		this.playAnimation('idle', isLooped);
+		this.playAnimation("idle", isLooped);
     }
 
 	public stopAnimation(durarion: number = 0.5) {

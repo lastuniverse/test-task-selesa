@@ -62,7 +62,7 @@ export abstract class BaseSlotReel extends BaseController {
 	}
 
 	private initCurrent() {
-		if (!this.symbolNames.includes(this.currentSymbol)) throw new Error(`The symbol ${this.currentSymbol} does not exist in the list of valid symbols [${this.symbolNames.join(',')}].`);
+		if (!this.symbolNames.includes(this.currentSymbol)) throw new Error(`The symbol ${this.currentSymbol} does not exist in the list of valid symbols [${this.symbolNames.join(",")}].`);
 		if (this.symbolNames.length < 5) throw new Error(`This type of reels requires at least five symbols in the tape.`);
 		while (this.symbolNames[0] !== this.currentSymbol) {
 			const shiftedSymbol = this.symbolNames.shift();
@@ -89,7 +89,7 @@ export abstract class BaseSlotReel extends BaseController {
 	}
 
 	protected createSymbol(symbolName: string): (Sprite | Container) {
-		throw new Error('The method "createSymbol" does nothing, override it in the inheritor');
+		throw new Error("The method 'createSymbol' does nothing, override it in the inheritor");
 	}
 
 	public override async start(): Promise<void> { }
@@ -133,7 +133,7 @@ export abstract class BaseSlotReel extends BaseController {
 		this.isFinishing = true;
 
 		const targetIndex = this.symbolNames.lastIndexOf(targetSymbol);
-		if (targetIndex < 0) throw new Error(`The terget symbol ${this.currentSymbol} does not exist in the list of valid symbols [${this.symbolNames.join(',')}].`);
+		if (targetIndex < 0) throw new Error(`The terget symbol ${this.currentSymbol} does not exist in the list of valid symbols [${this.symbolNames.join(",")}].`);
 
 		const currentIndex = this.symbolNames.lastIndexOf(this.currentSymbol) + 1;
 		let target = this.symbolNames.length + (currentIndex - targetIndex);

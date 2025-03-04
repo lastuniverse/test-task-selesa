@@ -14,16 +14,16 @@ export interface IGsapItemParams {
 }
 
 export enum EGsapMethods {
-	FROM = 'from',
-	TO = 'to',
-	SET = 'set',
-	FROM_TO = 'fromTo',
+	FROM = "from",
+	TO = "to",
+	SET = "set",
+	FROM_TO = "fromTo",
 }
 
 export enum EGsapSimpleMethods {
-	FROM = 'from',
-	TO = 'to',
-	SET = 'set',
+	FROM = "from",
+	TO = "to",
+	SET = "set",
 }
 
 export type GsapTweens = Array<IGsapTweenParams | IGsapTweenFromToParams>;
@@ -39,8 +39,6 @@ export interface IGsapTweenParams extends gsap.TweenVars {
 	onInterrupt?: undefined;
 	onComplete?: gsap.Callback;
 }
-// export type IGSAPPixiParams = PixiPlugin.Vars;
-
 
 export type GsapElements = Array<IGsapElementParams>;
 
@@ -50,15 +48,8 @@ export interface IGsapElementParams {
 }
 
 export enum EGsapTypes {
-	NINESLICESPRITE = 'NineSliceSprite',
-	SPRITE = 'Sprite',
-	LAYER = 'Container',
+	NINESLICESPRITE = "NineSliceSprite",
+	SPRITE = "Sprite",
+	LAYER = "Container",
 }
 
-// export type GsapMethods = Array<EGsapMethods>;
-// export enum EGsapMethods {
-// 	SET = 'set',
-// 	FROM = 'from',
-// 	TO = 'to',
-// 	// FROMTO = 'fromTo',
-// }

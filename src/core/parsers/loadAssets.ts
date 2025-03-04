@@ -28,7 +28,7 @@ const loadAsset = {
 		const files: Unzipped = await unzipResponce(response);
 
 		const params = getMeta(files) as IComponentParams;
-		if (!params || params.type !== 'asset') throw new Error(`Файл не является ассетом: ${url}`);
+		if (!params || params.type !== "asset") throw new Error(`Файл не является ассетом: ${url}`);
 
 		const resources = await getResources(files, asset, loader);
 		return resources;
@@ -71,10 +71,10 @@ async function getResources(files: Unzipped, asset: ResolvedAsset<TextureSourceO
 			resources.sounds[path.href] = await getSound(data, path.mimeType);
 		} else if (path.isData) {
 			const json = await getData(data);
-			if (path.extension === 'gsap.json') {
+			if (path.extension === "gsap.json") {
 				resources.gsap[path.href] = json;
 			} else {
-				// console.log('data', path.href, path);
+				// console.log("data", path.href, path);
 				resources.data[path.href] = json;
 			}
 		}
@@ -110,8 +110,8 @@ async function getSound(data: Uint8Array, mimeType: string): Promise<HTMLAudioEl
 
 		// Создаём HTMLAudioElement
 		const audio = new Audio(url);
-		audio.preload = 'auto';
-		audio.addEventListener('canplaythrough', () => {
+		audio.preload = "auto";
+		audio.addEventListener("canplaythrough", () => {
 			resolve(audio);
 		});
 		// Начинаем загрузку аудио

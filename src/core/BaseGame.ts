@@ -1,4 +1,4 @@
-import './parsers/loadAssets.ts';
+import "./parsers/loadAssets.ts";
 import * as PIXI from "pixi.js";
 import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin";
@@ -15,7 +15,6 @@ export abstract class BaseGame {
 	protected parentContainer!: HTMLElement;
 	protected resizeObserver!: ResizeObserver;
 	private sustemButtons!: SystemButtons;
-
 
 	constructor() {
 	}
@@ -43,7 +42,7 @@ export abstract class BaseGame {
 		this.app = new Application();
 
 		await this.app.init({
-			background: '#ffffff',
+			background: "#ffffff",
 			...options,
 		});
 		this.app.renderer.resize(BaseGame.GAME_WIDTH, BaseGame.GAME_HEIGHT);
@@ -67,19 +66,19 @@ export abstract class BaseGame {
 	}
 
 	private setupFocusHandling(): void {
-		this.handleTabChange(document.visibilityState === 'hidden');
+		this.handleTabChange(document.visibilityState === "hidden");
 
-		window.addEventListener('blur', () => {
+		window.addEventListener("blur", () => {
 			this.handleTabChange(true);
 		});
-		window.addEventListener('focus', () => {
+		window.addEventListener("focus", () => {
 			this.handleTabChange(false);
 		});
 	}
 
 	private handleTabChange = (isLost: boolean) => {
 		if (isLost) {
-			console.log('Пользователь покинул вкладку');
+			console.log("Пользователь покинул вкладку");
 			gsap.globalTimeline.pause()
 			gsap.ticker.sleep();
 			this.app.ticker.stop();
@@ -135,11 +134,11 @@ export abstract class BaseGame {
 	}
 
 	public async start() {
-		console.warn('The method "start" does nothing, override it in the inheritor')
+		console.warn("The method 'start' does nothing, override it in the inheritor")
 	}
 
 	public async stop() {
-		console.warn('The method "stop" does nothing, override it in the inheritor')
+		console.warn("The method 'stop' does nothing, override it in the inheritor")
 	}
 
 	public destroy(): void {

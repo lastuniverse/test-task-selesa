@@ -40,7 +40,7 @@ export class Sounds {
 		}
 				
 		await new Promise<void>((resolve, reject) => {
-			sound.addEventListener('ended', () => {
+			sound.addEventListener("ended", () => {
 				resolve();
 			});
 			sound.play();
@@ -84,13 +84,13 @@ export class Sounds {
 	}
 
 	public static pauseAll() {
-		if (this.audioContext.state === 'running') {
+		if (this.audioContext.state === "running") {
 			this.audioContext.suspend();
 		}
 	}
 
 	public static resumeAll() {
-		if (this.audioContext.state === 'suspended') {
+		if (this.audioContext.state === "suspended") {
 			this.audioContext.resume();
 		}		
 	}

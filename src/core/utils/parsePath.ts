@@ -12,7 +12,7 @@ const SOUNDS: Record<string, string> = {
 };
 
 const DATAS: Record<string, string> = {
-	'gsap.json': "application/json",
+	"gsap.json": "application/json",
 	json: "application/json",
 	json5: "application/json5"
 };
@@ -69,7 +69,7 @@ export class AssetInnerPath {
 		const parts = [...this._parts];
 		if (this.removeRoot) parts.shift();
 		if (this.removeTypeRoot) parts.shift();
-		return parts.join('/')
+		return parts.join("/")
 	}
 
 	get file(): string {
@@ -92,7 +92,7 @@ export class AssetInnerPath {
 
 	get href(): string {
 		const filename = this.removeExtension ? this._name : this._file;
-		return [this.path, filename].filter(part => part.length > 0).join('/');
+		return [this.path, filename].filter(part => part.length > 0).join("/");
 	}
 }
 

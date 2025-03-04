@@ -32,25 +32,25 @@ export class SlotGame extends BaseSlotGame {
 
 	public override async preload() {
 		await Promise.all([
-			Assets.load({ alias: 'slot', src: './assets/slot/slot.asset' }),
+			Assets.load({ alias: "slot", src: "./assets/slot/slot.asset" }),
 			this.reels.preload(),
 		]);
 	}
 
 	public override async init() {
-		this.componentView = Component.from('slot');
+		this.componentView = Component.from("slot");
 
-		this.spinSound = this.componentView.getSound('spin_click');
-		this.winSound = this.componentView.getSound('win_02');
-		this.bigWinSound = this.componentView.getSound('big_win_02');
-		this.winCountSound = this.componentView.getSound('win_count');
-		this.ambientMusic = this.componentView.getSound('a_flat_major');
+		this.spinSound = this.componentView.getSound("spin_click");
+		this.winSound = this.componentView.getSound("win_02");
+		this.bigWinSound = this.componentView.getSound("big_win_02");
+		this.winCountSound = this.componentView.getSound("win_count");
+		this.ambientMusic = this.componentView.getSound("a_flat_major");
 		await super.init();
-		this.componentView.getLayer(`reels`).addChild(this.reels.view);
+		this.componentView.getLayer("reels").addChild(this.reels.view);
 
 		this.spineBoy = new SpineBoy();
 		await this.spineBoy.init();
-		this.componentView.getLayer('spine_boy').addChild(this.spineBoy.view);
+		this.componentView.getLayer("spine_boy").addChild(this.spineBoy.view);
 	}
 
 	protected override createReels(): SlotReels {
@@ -59,11 +59,11 @@ export class SlotGame extends BaseSlotGame {
 
 	protected override  initializeUI() {
 		const templateStyle = {
-			fill: '#ffbb00',
-			stroke: { color: '#442200', width: 2, join: 'round' as CanvasLineJoin },
-			align: 'center' as TextStyleAlign,
+			fill: "#ffbb00",
+			stroke: { color: "#442200", width: 2, join: "round" as CanvasLineJoin },
+			align: "center" as TextStyleAlign,
 			fontSize: 30,
-			fontWeight: 'bold' as TextStyleFontWeight
+			fontWeight: "bold" as TextStyleFontWeight
 		};
 
 		const playerTextStyle = new TextStyle({ ...templateStyle, fontSize: 25 });
@@ -77,15 +77,15 @@ export class SlotGame extends BaseSlotGame {
 		this.betText = new Text({ style: textStyle });
 		this.componentView.getLayer(`bet`).addChild(this.betText);
 
-		this.spinButton = this.componentView.getSprite('spin_button_up') as Sprite;
+		this.spinButton = this.componentView.getSprite("spin_button_up") as Sprite;
 		this.spinButton.interactive = true;
-		this.spinButton.eventMode = 'static';
-		this.spinButton.on('pointerdown', () => { this.spin(); });
+		this.spinButton.eventMode = "static";
+		this.spinButton.on("pointerdown", () => { this.spin(); });
 
-		this.betButton = this.componentView.getSprite('bet_button_up') as Sprite;
+		this.betButton = this.componentView.getSprite("bet_button_up") as Sprite;
 		this.betButton.interactive = true;
-		this.betButton.eventMode = 'static';
-		this.betButton.on('pointerdown', () => this.increaseBet());
+		this.betButton.eventMode = "static";
+		this.betButton.on("pointerdown", () => this.increaseBet());
 
 		this.updateUI();
 	}
@@ -117,7 +117,7 @@ export class SlotGame extends BaseSlotGame {
 		this.spineBoy.jump();
 
 		Sounds.play(this.spinSound);
-		await this.componentView.playAnimation('bet_click');
+		await this.componentView.playAnimation("bet_click");
 
 		super.increaseBet();
 
@@ -128,7 +128,7 @@ export class SlotGame extends BaseSlotGame {
 	protected override async beforeSpinAnimations(): Promise<void> {
 		this.spineBoy.run(true);
 		Sounds.play(this.spinSound);
-		await this.componentView.playAnimation('spin_click');
+		await this.componentView.playAnimation("spin_click");
 	}
 
 	protected override async completeSpin(data: IRequestSpinData) {
@@ -156,8 +156,8 @@ export class SlotGame extends BaseSlotGame {
 	}
 
 	private async playMoneyAnimation(amount: number, duration: number = 1) {
-		const texture = this.componentView.getTexture('money');
-		const layer = this.componentView.getLayer('overlay');
+		const texture = this.componentView.getTexture("money");
+		const layer = this.componentView.getLayer("overlay");
 		const promises = [];
 
 		for (let i = 0; i < amount; i++) {
@@ -169,14 +169,14 @@ export class SlotGame extends BaseSlotGame {
 			sprite.scale = scale;
 			sprite.alpha = 0;
 
-			gsap.to(sprite, { delay, duration: duration, ease: 'power4.inOut', pixi: { y: 994 } });
-			gsap.to(sprite, { delay, duration: duration, ease: 'power4.in', pixi: { x: 587 } });
-			gsap.to(sprite, { delay, duration: duration * 0.2, ease: 'power4.out', pixi: { alpha: 1 } });
-			gsap.to(sprite, { delay, duration: duration * 0.20, repeat: 3, yoyo: true, ease: 'power3.out', pixi: { scaleX: -scale } });
+			gsap.to(sprite, { delay, duration: duration, ease: "power4.inOut", pixi: { y: 994 } });
+			gsap.to(sprite, { delay, duration: duration, ease: "power4.in", pixi: { x: 587 } });
+			gsap.to(sprite, { delay, duration: duration * 0.2, ease: "power4.out", pixi: { alpha: 1 } });
+			gsap.to(sprite, { delay, duration: duration * 0.20, repeat: 3, yoyo: true, ease: "power3.out", pixi: { scaleX: -scale } });
 
 			const promise = new Promise<void>((resolve, _) => {
 				gsap.to(sprite, {
-					delay: duration * 0.5 + delay, duration: duration * 0.7, ease: 'none', pixi: { alpha: 0, scale: 0 }, onComplete: () => {
+					delay: duration * 0.5 + delay, duration: duration * 0.7, ease: "none", pixi: { alpha: 0, scale: 0 }, onComplete: () => {
 						gsap.killTweensOf(sprite);
 						resolve();
 					}

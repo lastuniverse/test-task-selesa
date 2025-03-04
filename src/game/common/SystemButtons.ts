@@ -18,30 +18,30 @@ export class SystemButtons extends BaseController {
 
 	public override async preload() {
 		await Assets.load([
-			{ alias: 'top_buttons', src: './assets/top_buttons.asset' }
+			{ alias: "top_buttons", src: "./assets/top_buttons.asset" }
 		]);
 	}
 
 	public override async init() {
-		this.componentView = Component.from('top_buttons');
+		this.componentView = Component.from("top_buttons");
 
-		this.buttons = this.componentView.getLayer('buttons');
+		this.buttons = this.componentView.getLayer("buttons");
 
-		this.soundButton = this.componentView.getSprite('sound') as Sprite;
+		this.soundButton = this.componentView.getSprite("sound") as Sprite;
 		this.soundButton.interactive = true;
-		this.soundButton.eventMode = 'static';
-		this.soundButton.on('pointerdown', () => { this.turnSound(); });
+		this.soundButton.eventMode = "static";
+		this.soundButton.on("pointerdown", () => { this.turnSound(); });
 
-		this.fullscreenButton = this.componentView.getSprite('fullscreen') as Sprite;
+		this.fullscreenButton = this.componentView.getSprite("fullscreen") as Sprite;
 		this.fullscreenButton.interactive = true;
-		this.fullscreenButton.eventMode = 'static';
-		this.fullscreenButton.on('pointerdown', () => { this.turnFullscreen(); });
+		this.fullscreenButton.eventMode = "static";
+		this.fullscreenButton.on("pointerdown", () => { this.turnFullscreen(); });
 
-		this.fullscreenOffButton = this.componentView.getSprite('fullscreen_off') as Sprite;
+		this.fullscreenOffButton = this.componentView.getSprite("fullscreen_off") as Sprite;
 
-		document.addEventListener('fullscreenchange', this.updateFullscreenButton);
-		document.addEventListener('webkitfullscreenchange', this.updateFullscreenButton); // Chrome/Safari
-		document.addEventListener('mozfullscreenchange', this.updateFullscreenButton); // Firefox
+		document.addEventListener("fullscreenchange", this.updateFullscreenButton);
+		document.addEventListener("webkitfullscreenchange", this.updateFullscreenButton); // Chrome/Safari
+		document.addEventListener("mozfullscreenchange", this.updateFullscreenButton); // Firefox
 	}
 
 	public async turnSound(): Promise<void> {
@@ -131,7 +131,7 @@ export class SystemButtons extends BaseController {
 
 	get isMobile(): boolean {
 		const userAgent = navigator.userAgent.toLowerCase();
-		const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+		const isTouchDevice = "ontouchstart" in window || navigator.maxTouchPoints > 0;
 		const isMobileUserAgent = /mobile|android|iphone|ipad|ipod|windows phone|webos|blackberry/.test(userAgent);
 		const isSmallScreen = window.innerWidth <= 768; // пока нет уверености в необходимости isSmallScreen
 
@@ -143,9 +143,9 @@ export class SystemButtons extends BaseController {
 	public override async stop(): Promise<void> { }
 
 	public override destroy(): void {
-		document.removeEventListener('fullscreenchange', this.updateFullscreenButton);
-		document.removeEventListener('webkitfullscreenchange', this.updateFullscreenButton); // Chrome/Safari
-		document.removeEventListener('mozfullscreenchange', this.updateFullscreenButton); // Firefox
+		document.removeEventListener("fullscreenchange", this.updateFullscreenButton);
+		document.removeEventListener("webkitfullscreenchange", this.updateFullscreenButton); // Chrome/Safari
+		document.removeEventListener("mozfullscreenchange", this.updateFullscreenButton); // Firefox
 		this.componentView.destroy();
 	}
 }

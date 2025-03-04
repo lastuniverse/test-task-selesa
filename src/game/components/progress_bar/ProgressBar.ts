@@ -50,10 +50,10 @@ export class ProgressBar extends Container {
 		this.addChild(this.slider);
 
 		this.textStyle = new TextStyle({
-			fill: '#ffffff',
-			stroke: { color: '#000000', width: 4, join: 'round' },
+			fill: "#ffffff",
+			stroke: { color: "#000000", width: 4, join: "round" },
 			fontSize: 20,
-			fontWeight: 'bold'
+			fontWeight: "bold"
 		});
 		this.progressLabel = new Text({
 			text: `${Math.round(this.progress * 100)}%`,

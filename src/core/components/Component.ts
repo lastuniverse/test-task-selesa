@@ -6,7 +6,7 @@ import { EGsapMethods, GsapElements, IGsapTweenFromToParams, IGsapTweenParams } 
 import { TweenDeferred } from "./TweenDeferred.ts";
 
 export class Component extends Container {
-	protected static ROOT_LAYER_NAME: string = 'root';
+	protected static ROOT_LAYER_NAME: string = "root";
 	public readonly resources: ComponentResources;
 	private animations: Map<string, TweenDeferred[]> = new Map();
 
@@ -85,7 +85,7 @@ export class Component extends Container {
 		return tweenDeferred;
 	}
 
-	private getElements(elements: GsapElements, animationName: string = 'unknown'): gsap.TweenTarget[] {
+	private getElements(elements: GsapElements, animationName: string = "unknown"): gsap.TweenTarget[] {
 		return elements.reduce((acc, elementParams) => {
 			const element = this.resources.getElement(elementParams);
 			if (!element) {

@@ -7,7 +7,7 @@ export class TweenDeferred {
 		this.tween = tween;
 		this.promise = new Promise((resolve, _) => {
 			this.resolve = resolve;
-			tween.eventCallback('onComplete', () => resolve(tween));
+			tween.eventCallback("onComplete", () => resolve(tween));
 		});
 	}
 

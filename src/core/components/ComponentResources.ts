@@ -14,8 +14,6 @@ export class ComponentResources {
 	private sprites: Record<string, Sprite | NineSliceSprite> | null = {};
 	private masksData: Record<string, Sprite | Container> | null = {};
 
-
-
 	constructor(resources: ResourcesMap) {
 		this.resources = resources;
 		this.textures = resources.textures;
@@ -35,7 +33,7 @@ export class ComponentResources {
 	private initMasks(): void {
 		Object.entries(this.masksData!).forEach(([maskName, maskedElement]) => {
 			const element = this.getElement({ name: maskName, type: EGsapTypes.SPRITE });
-			if (!element) throw new Error(`mask ${maskName} not found`);
+			if (!element) throw new Error(`mask '${maskName}' not found`);
 			maskedElement.mask = element;
 		});
 
@@ -44,19 +42,19 @@ export class ComponentResources {
 
 	public createLayer(layerName: string): Container {
 		const layerParams = this.getLayerData(layerName);
-		if (!layerParams) throw new Error(`layer ${layerName} not found`);
+		if (!layerParams) throw new Error(`layer '${layerName}' not found`);
 
 		const layer = new Container();
 		this.applyContainerParams(layer, layerParams);
 
 		layerParams.children?.forEach(childParams => {
-			if (childParams.type === 'Sprite') {
+			if (childParams.type === "Sprite") {
 				const childSprite = this.createSprite(childParams.name);
 				layer.addChild(childSprite);
-			} else if (childParams.type === 'NineSliceSprite') {
+			} else if (childParams.type === "NineSliceSprite") {
 				const childLayer = this.createNineSliceSprite(childParams.name);
 				layer.addChild(childLayer);
-			} else if (childParams.type === 'Container') {
+			} else if (childParams.type === "Container") {
 				const childLayer = this.createLayer(childParams.name);
 				layer.addChild(childLayer);
 			}
@@ -67,10 +65,9 @@ export class ComponentResources {
 		return layer;
 	}
 
-
 	public createSprite(spriteName: string): Sprite {
 		const spriteParams = this.getSpriteData(spriteName);
-		if (!spriteParams) throw new Error(`sprite ${spriteName} not found`);
+		if (!spriteParams) throw new Error(`sprite '${spriteName}' not found`);
 
 		const texture = this.getTexture(spriteParams.texture);
 		let sprite = new Sprite(texture);
@@ -83,11 +80,11 @@ export class ComponentResources {
 
 	public createNineSliceSprite(spriteName: string): NineSliceSprite {
 		const spriteParams = this.getSpriteData(spriteName);
-		if (!spriteParams) throw new Error(`sprite ${spriteName} not found`);
+		if (!spriteParams) throw new Error(`sprite '${spriteName}' not found`);
 
 		const texture = this.getTexture(spriteParams.texture);
 		const slice = spriteParams.slice ?? 20;
-		const isNumber = typeof spriteParams.slice === 'number';
+		const isNumber = typeof spriteParams.slice === "number";
 		const sliceParams = {
 			texture,
 			leftWidth: isNumber ? slice : (slice as number[])[0],
@@ -112,7 +109,7 @@ export class ComponentResources {
 		this.setElemetParams(sprite, params);
 
 		if (params.anchor != null) {
-			if (typeof params.anchor === 'number') {
+			if (typeof params.anchor === "number") {
 				sprite.anchor.set(params.anchor, params.anchor);
 			} else {
 				sprite.anchor.set(params.anchor.x, params.anchor.y);
@@ -131,7 +128,7 @@ export class ComponentResources {
 	private setNineSliceSpriteParams(sprite: NineSliceSprite, params: INineSpriteParams): void {
 		this.setElemetParams(sprite, params);
 		// if (params.anchor != null) {
-		// 	if (typeof params.anchor === 'number'){
+		// 	if (typeof params.anchor === "number"){
 		// 		sprite.anchor.set(params.anchor, params.anchor);
 		// 	}else{
 		// 		sprite.anchor.set(params.anchor.x, params.anchor.y);
@@ -139,7 +136,7 @@ export class ComponentResources {
 		// }
 
 		if (params.pivot != null) {
-			if (typeof params.pivot === 'number') {
+			if (typeof params.pivot === "number") {
 				sprite.pivot.set(params.pivot, params.pivot);
 			} else {
 				sprite.pivot.set(params.pivot.x, params.pivot.y);
@@ -169,14 +166,14 @@ export class ComponentResources {
 		}
 
 		if (params.scale != null) {
-			if (typeof params.scale === 'number') {
+			if (typeof params.scale === "number") {
 				element.scale.set(params.scale, params.scale);
 			} else {
 				element.scale.set(params.scale.x, params.scale.y);
 			}
 		}
 		if (params.blur != null) {
-			if (typeof params.blur === 'number') {
+			if (typeof params.blur === "number") {
 				gsap.set(element, { pixi: { blur: params.blur } });
 			} else {
 				gsap.set(element, { pixi: { blurX: params.blur.x, blurY: params.blur.y } });

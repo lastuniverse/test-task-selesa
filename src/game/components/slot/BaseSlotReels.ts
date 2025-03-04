@@ -32,7 +32,7 @@ export class BaseSlotReels extends BaseController {
 	}
 
 	protected createReel(): BaseSlotReel {
-		throw new Error('The method "createReel" does nothing, override it in the inheritor');
+		throw new Error("The method 'createReel' does nothing, override it in the inheritor");
 	}
 
 	public override async start(): Promise<void> {

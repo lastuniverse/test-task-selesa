@@ -5,7 +5,6 @@ import { ProgressBar } from "../progress_bar/ProgressBar.ts";
 import { BaseGame } from "../../../core/BaseGame.ts";
 import { Sounds } from "../../../core/sounds/Sounds.ts";
 
-
 export class Preloader extends BaseController {
 	private componentView!: Component;
 	private progressBar!: ProgressBar;
@@ -17,18 +16,18 @@ export class Preloader extends BaseController {
 
 	public override async preload() {
 		await Assets.load([
-			{ alias: 'preloader', src: './assets/preloader.asset' },
-			{ alias: 'progress', src: './assets/progress/progress.png' },
-			{ alias: 'progress_background', src: './assets/progress/progress_background.png' },
+			{ alias: "preloader", src: "./assets/preloader.asset" },
+			{ alias: "progress", src: "./assets/progress/progress.png" },
+			{ alias: "progress_background", src: "./assets/progress/progress_background.png" },
 		]);
 	}
 
 	public override async init() {
-		this.componentView = Component.from('preloader');
+		this.componentView = Component.from("preloader");
 
 		this.progressBar = new ProgressBar({
-			backgroundTexture: 'progress_background',
-			sliderTexture: 'progress',
+			backgroundTexture: "progress_background",
+			sliderTexture: "progress",
 			width: 1000,
 		});
 
@@ -37,18 +36,18 @@ export class Preloader extends BaseController {
 			BaseGame.GAME_HEIGHT * 0.35
 		);
 
-		this.componentView.getLayer('root').addChild(this.progressBar);
-		this.music = this.componentView.getSound('logo_05');
+		this.componentView.getLayer("root").addChild(this.progressBar);
+		this.music = this.componentView.getSound("logo_05");
 	}
 
 	public override async start(): Promise<void> {
 		Sounds.play(this.music);
-		this.componentView.playAnimation('intro');
+		this.componentView.playAnimation("intro");
 	}
 
 	public override async stop(): Promise<void> {
 		Sounds.stop(this.music, true);
-		await this.componentView.playAnimation('out');
+		await this.componentView.playAnimation("out");
 		this.componentView.stopAnimation();
 	}
 
@@ -71,11 +70,11 @@ export class Preloader extends BaseController {
 			await promise;
 			count++;
 			const progress = Math.min(1, (count-currentAmount) / (amount-currentAmount));
-			console.log('custom progress', progress, (count-currentAmount), (amount-currentAmount), count, amount)
+			console.log("custom progress", progress, (count-currentAmount), (amount-currentAmount), count, amount)
 
 			this.progressBar.setProgress(progress);
 		}
-		
+
 		const promises = list.map(async item => {
 			return updateProgress(item.promise);
 		});
