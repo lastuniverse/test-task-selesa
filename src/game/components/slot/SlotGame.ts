@@ -185,6 +185,7 @@ export class SlotGame extends BaseSlotGame {
 				gsap.to(sprite, {
 					delay: duration * 0.5 + delay, duration: duration * 0.7, ease: "none", pixi: { alpha: 0, scale: 0 }, onComplete: () => {
 						gsap.killTweensOf(sprite);
+						sprite.destroy();
 						resolve();
 					}
 				});
