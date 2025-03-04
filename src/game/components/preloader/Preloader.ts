@@ -68,10 +68,13 @@ export class Preloader extends BaseController {
 
 		const updateProgress = async (promise: Promise<any>) => {
 			await promise;
+			
 			count++;
 			const progress = Math.max(0,Math.min(1, (count-startAmount) / (amount-startAmount)));
 			if(progress===0) return;
-			console.log("custom progress", (progress * 100).toFixed(0), (count-startAmount), (amount-startAmount));
+
+			console.log("custom progress", `${(progress * 100).toFixed(0)}%`, (count-startAmount), (amount-startAmount));
+
 			this.progressBar.setProgress(progress);
 		}
 
