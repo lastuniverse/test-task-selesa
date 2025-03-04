@@ -51,7 +51,7 @@ export class Preloader extends BaseController {
 		this.componentView.stopAnimation();
 	}
 
-	public async initPogressWatcher(startWatchingLoads: () => void ): Promise<void> {
+	public async startPogressWatcher(startWatchingLoads: () => void ): Promise<void> {
 		/**
 		 * На финале столкнулся с тем, что PIXI 8 никак не отслеживает глобальный 
 		 * прогресс загрузки, пришлось изобразить весь этот ужас ниже. 
