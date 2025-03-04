@@ -6,11 +6,10 @@ import { BaseGame } from "../core/BaseGame.ts";
 import { gsapSleep } from "../core/utils/sleep.ts";
 import { SlotGame } from "./components/slot/SlotGame.ts";
 
-
 export class Game extends BaseGame {
 	private logo: BaseController | null = null;
 	private preloader: Preloader | null = null;
-	private slot!: SlotGame;
+	private slot: SlotGame | null = null;
 
 	async init(parentElementId: string, pixiOptions: Partial<ApplicationOptions> = {}) {
 		await super.init(parentElementId, pixiOptions);
@@ -44,10 +43,10 @@ export class Game extends BaseGame {
 	}
 
 	private async startPreloader() {
-		await this.logo?.stop();
-		await this.preloader?.start();
+		await this.logo!.stop();
+		await this.preloader!.start();
 
-		this.logo?.destroy();
+		this.logo!.destroy();
 		this.logo = null;
 
 		await this.preloader?.startPogressWatcher(()=>this.createSlot());
@@ -60,12 +59,12 @@ export class Game extends BaseGame {
 	}
 
 	private async startSlot() {
-		await this.preloader?.stop();
-		this.preloader?.destroy();
+		await this.preloader!.stop();
+		this.preloader!.destroy();
 		this.preloader = null;
 
-		this.app.stage.addChildAt(this.slot.view, 0);
-		await this.slot.start();
+		this.app.stage.addChildAt(this.slot!.view, 0);
+		await this.slot!.start();
 	}
 
 	public destroy(): void {

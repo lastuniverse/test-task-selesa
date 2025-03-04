@@ -174,8 +174,9 @@ export abstract class BaseSlotReel extends BaseController {
 
 	private reeelSlotsAnimate = () => {
 		if (this.blur) {
-			let strength = this.position - this.previousPosition;
-			this.blur.blurY = strength * this.motionBlur;
+			const strength = Math.abs(this.position - this.previousPosition);
+			let blur = strength > 1 ?  this.blur.blurY : strength * this.motionBlur;
+			this.blur.blurY = blur;
 		}
 
 		this.previousPosition = this.position;

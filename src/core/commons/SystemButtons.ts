@@ -1,8 +1,7 @@
 import { Assets, Container, Sprite } from "pixi.js";
-import { BaseController } from "../../core/commons/BaseController";
-import { Component } from "../../core/components/Component";
-import { Sounds } from "../../core/sounds/Sounds";
-
+import { BaseController } from "./BaseController";
+import { Component } from "../components/Component";
+import { Sounds } from "../sounds/Sounds";
 
 export class SystemButtons extends BaseController {
 	private componentView!: Component;

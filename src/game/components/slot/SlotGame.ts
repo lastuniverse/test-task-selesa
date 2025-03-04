@@ -24,7 +24,7 @@ export class SlotGame extends BaseSlotGame {
 	private ambientMusic!: HTMLAudioElement;
 	private bigWinSound!: HTMLAudioElement;
 	private spineBoy!: SpineBoy;
-	private money: Sprite[] = [];
+	private money: Sprite[] | null = [];
 
 	constructor() {
 		super();
@@ -192,7 +192,7 @@ export class SlotGame extends BaseSlotGame {
 			});
 
 			promises.push(promise);
-			this.money.push(sprite)
+			this.money?.push(sprite)
 			layer.addChild(sprite);
 		}
 
@@ -209,10 +209,11 @@ export class SlotGame extends BaseSlotGame {
 	}
 
 	public override destroy(): void {
-		this.money.forEach(item => {
+		this.money?.forEach(item => {
 			gsap.killTweensOf(item);
 			item.destroy();
 		});
+		this.money = null;
 
 		Sounds.stop(this.spinSound);
 		Sounds.stop(this.winSound);

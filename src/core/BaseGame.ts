@@ -4,7 +4,7 @@ import { gsap } from "gsap";
 import { PixiPlugin } from "gsap/PixiPlugin";
 import { Application, ApplicationOptions } from "pixi.js";
 import { Sounds } from "./sounds/Sounds.ts";
-import { SystemButtons } from "../game/common/SystemButtons.ts";
+import { SystemButtons } from "./commons/SystemButtons.ts";
 
 export abstract class BaseGame {
 	// Базовые размеры игровой области (пока в виде констант, в проэкте нужен будет внешний механизм)
@@ -15,9 +15,6 @@ export abstract class BaseGame {
 	protected parentContainer!: HTMLElement;
 	protected resizeObserver!: ResizeObserver;
 	private sustemButtons!: SystemButtons;
-
-	constructor() {
-	}
 
 	async init(parentElementId: string, pixiOptions: Partial<ApplicationOptions> = {}) {
 		await this.initPixiApp(pixiOptions);
