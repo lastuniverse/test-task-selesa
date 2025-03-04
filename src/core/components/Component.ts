@@ -150,6 +150,7 @@ export class Component extends Container {
 	}
 
 	destroy(options?: DestroyOptions): void {
+		this.resources?.destroy();
 		super.destroy(options);
 		this.stopAnimation();
 	}

@@ -51,8 +51,7 @@ export class Game extends BaseGame {
 		this.logo?.destroy();
 		this.logo = null;
 
-		await this.createSlot();
-		await this.preloader?.initPogressWatcher();
+		await this.preloader?.initPogressWatcher(()=>this.createSlot());
 	}
 
 	private async createSlot() {

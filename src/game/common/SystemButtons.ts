@@ -42,20 +42,14 @@ export class SystemButtons extends BaseController {
 		document.addEventListener('fullscreenchange', this.updateFullscreenButton);
 		document.addEventListener('webkitfullscreenchange', this.updateFullscreenButton); // Chrome/Safari
 		document.addEventListener('mozfullscreenchange', this.updateFullscreenButton); // Firefox
-		// // document.addEventListener('keydown', (e) => {
-		// // 	if (e.key === 'F11') {
-		// // 		this.updateFullscreenButton();
-		// // 	}
-		// //   });		
-		// this.updateFullscreenButton();
 	}
 
 	public async turnSound(): Promise<void> {
 		this.isSoundOn = !this.isSoundOn;
 		this.soundButton.alpha = this.isSoundOn ? 0.7 : 0.3;
-		if(this.isSoundOn){
+		if (this.isSoundOn) {
 			Sounds.unmuteAll();
-		}else{
+		} else {
 			Sounds.muteAll();
 		}
 	}
@@ -70,11 +64,10 @@ export class SystemButtons extends BaseController {
 	}
 
 	private updateFullscreenButton = () => {
-		if(!this.componentView) return;
-		console.log('isFullscreen', this.isFullscreen);
+		if (!this.componentView) return;
 		this.fullscreenButton.alpha = this.isFullscreen ? 0.0 : 0.7;
-		this.fullscreenOffButton.alpha = this.isF11Fullscreen ? 0.3 : 0.7; 
-		this.fullscreenOffButton.visible = this.isFullscreen;		
+		this.fullscreenOffButton.alpha = this.isF11Fullscreen ? 0.3 : 0.7;
+		this.fullscreenOffButton.visible = this.isFullscreen;
 	}
 
 	private enterFullscreen(element = document.documentElement) {
@@ -119,10 +112,11 @@ export class SystemButtons extends BaseController {
 			anyElement.webkitFullscreenElement ||
 			anyElement.msFullscreenElement
 		);
-	}	
+	}
+
 	private get isF11Fullscreen() {
 		return !this.isApiFullscreen && window.innerHeight === screen.height;
-	}	
+	}
 
 	public updateResize(scaleX: number, scaleY: number) {
 		var multiplier = this.isMobile ? 1.2 : 0.6;
@@ -135,25 +129,23 @@ export class SystemButtons extends BaseController {
 		this.updateFullscreenButton();
 	}
 
-
 	get isMobile(): boolean {
 		const userAgent = navigator.userAgent.toLowerCase();
 		const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 		const isMobileUserAgent = /mobile|android|iphone|ipad|ipod|windows phone|webos|blackberry/.test(userAgent);
 		const isSmallScreen = window.innerWidth <= 768; // пока нет уверености в необходимости isSmallScreen
-	
+
 		return isMobileUserAgent && isTouchDevice;
-	}	
+	}
 
 	public override async start(): Promise<void> { }
 
 	public override async stop(): Promise<void> { }
 
 	public override destroy(): void {
-		this.componentView.destroy();
 		document.removeEventListener('fullscreenchange', this.updateFullscreenButton);
 		document.removeEventListener('webkitfullscreenchange', this.updateFullscreenButton); // Chrome/Safari
 		document.removeEventListener('mozfullscreenchange', this.updateFullscreenButton); // Firefox
-
+		this.componentView.destroy();
 	}
 }

@@ -15,7 +15,7 @@ export abstract class BaseGame {
 	protected parentContainer!: HTMLElement;
 	protected resizeObserver!: ResizeObserver;
 	private sustemButtons!: SystemButtons;
-	
+
 
 	constructor() {
 	}
@@ -29,7 +29,7 @@ export abstract class BaseGame {
 		this.initSystemButtons();
 	}
 
-	private async initSystemButtons(){
+	private async initSystemButtons() {
 		this.sustemButtons = new SystemButtons();
 		await this.sustemButtons.preload();
 		await this.sustemButtons.init();
@@ -52,7 +52,7 @@ export abstract class BaseGame {
 	private initGsap() {
 		gsap.registerPlugin(PixiPlugin);
 		PixiPlugin.registerPIXI(PIXI);
-		// this.app.ticker.stop();
+		this.app.ticker.stop();
 		gsap.ticker.add(() => {
 			this.app.ticker.update();
 		});
@@ -69,22 +69,16 @@ export abstract class BaseGame {
 	private setupFocusHandling(): void {
 		this.handleTabChange(document.visibilityState === 'hidden');
 
-		// Отслеживаем потерю фокуса окном
-		window.addEventListener('blur', ()=>{
+		window.addEventListener('blur', () => {
 			this.handleTabChange(true);
 		});
-		window.addEventListener('focus', ()=>{
+		window.addEventListener('focus', () => {
 			this.handleTabChange(false);
 		});
-
-		// Отслеживаем изменение видимости страницы
-		// document.addEventListener('visibilitychange', () => {
-		// 	this.handleTabChange(document.visibilityState === 'hidden');
-		// });
 	}
 
 	private handleTabChange = (isLost: boolean) => {
-		if(isLost){
+		if (isLost) {
 			console.log('Пользователь покинул вкладку');
 			gsap.globalTimeline.pause()
 			gsap.ticker.sleep();
@@ -130,7 +124,7 @@ export abstract class BaseGame {
 		this.handleTabChange(false);
 	}
 
-	private updateSystemButtons(){
+	private updateSystemButtons() {
 		const { clientWidth: width, clientHeight: height } = this.parentContainer;
 		const isLandscape = width > height;
 		if (isLandscape) {

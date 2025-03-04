@@ -5,14 +5,16 @@ import { EGsapTypes, GsapItems, IGsapElementParams } from "../parsers/gsapTypes.
 
 export class ComponentResources {
 	public readonly resources: ResourcesMap;
-	private animationsData: Record<string, GsapItems> = {};
-	private layersData: Record<string, ILayerParams> = {};
-	private spritesData: Record<string, ISpriteParams> = {};
-	private textures: Record<string, Texture> = {};
-	private sounds: Record<string, HTMLAudioElement> = {};
-	private layers: Record<string, Container> = {};
-	private sprites: Record<string, Sprite | NineSliceSprite> = {};
-	private masksData: Record<string, Sprite | Container> = {};
+	private animationsData: Record<string, GsapItems> | null = {};
+	private layersData: Record<string, ILayerParams> | null = {};
+	private spritesData: Record<string, ISpriteParams> | null = {};
+	private textures: Record<string, Texture> | null = {};
+	private sounds: Record<string, HTMLAudioElement> | null = {};
+	private layers: Record<string, Container> | null = {};
+	private sprites: Record<string, Sprite | NineSliceSprite> | null = {};
+	private masksData: Record<string, Sprite | Container> | null = {};
+
+
 
 	constructor(resources: ResourcesMap) {
 		this.resources = resources;
@@ -31,7 +33,7 @@ export class ComponentResources {
 	}
 
 	private initMasks(): void {
-		Object.entries(this.masksData).forEach(([maskName, maskedElement]) => {
+		Object.entries(this.masksData!).forEach(([maskName, maskedElement]) => {
 			const element = this.getElement({ name: maskName, type: EGsapTypes.SPRITE });
 			if (!element) throw new Error(`mask ${maskName} not found`);
 			maskedElement.mask = element;
@@ -60,7 +62,7 @@ export class ComponentResources {
 			}
 		});
 
-		this.layers[layerName] = layer;
+		this.layers![layerName] = layer;
 
 		return layer;
 	}
@@ -74,7 +76,7 @@ export class ComponentResources {
 		let sprite = new Sprite(texture);
 		this.setSpriteParams(sprite, spriteParams);
 
-		this.sprites[spriteName] = sprite;
+		this.sprites![spriteName] = sprite;
 
 		return sprite;
 	}
@@ -97,7 +99,7 @@ export class ComponentResources {
 		const sprite = new NineSliceSprite(sliceParams);
 		this.setNineSliceSpriteParams(sprite, spriteParams);
 
-		this.sprites[spriteName] = sprite;
+		this.sprites![spriteName] = sprite;
 
 		return sprite;
 	}
@@ -155,7 +157,7 @@ export class ComponentResources {
 
 	private setElemetParams(element: Sprite | Container, params: IElementParams): void {
 		if (params.mask != null) {
-			this.masksData[params.mask] = element;
+			this.masksData![params.mask] = element;
 		}
 
 		if (params.position != null) {
@@ -196,54 +198,65 @@ export class ComponentResources {
 
 	private parseLayers(layers: AssetLayersParams): void {
 		layers.forEach(layer => {
-			this.layersData[layer.name] = layer;
+			this.layersData![layer.name] = layer;
 		});
 	}
 
 	private parseSprites(sprites: AssetSpritesParams): void {
 		sprites.forEach(sprite => {
-			this.spritesData[sprite.name] = sprite;
+			this.spritesData![sprite.name] = sprite;
 		});
 	}
 
 	private getLayerData(layerName: string): ILayerParams {
-		return this.layersData[layerName] as ILayerParams;
+		return this.layersData![layerName] as ILayerParams;
 	}
 
-	private getSpriteData(spriteName: string): ISpriteParams {
-		return this.spritesData[spriteName] as ISpriteParams;
+	private getSpriteData(spriteName: string): ISpriteParams{
+		return this.spritesData![spriteName] as ISpriteParams;
 	}
 
-	public getAnimationData(animationName: string): GsapItems {
-		return this.animationsData[animationName];
+	public getAnimationData(animationName: string): GsapItems{
+		return this.animationsData![animationName];
 	}
 
 	public getLayer(layerName: string): Container {
-		return this.layers[layerName];
+		return this.layers![layerName];
 	}
 
-	public getSprite(spriteName: string): Sprite | NineSliceSprite {
-		return this.sprites[spriteName];
+	public getSprite(spriteName: string): Sprite | NineSliceSprite{
+		return this.sprites![spriteName];
 	}
 
 	public getTexture(textureName: string): Texture {
-		return this.textures[textureName];
+		return this.textures![textureName];
 	}
 
-	public getSound(soundName: string): HTMLAudioElement {
-		return this.sounds[soundName];
+	public getSound(soundName: string): HTMLAudioElement{
+		return this.sounds![soundName];
 	}
 
-	public getElement(elementPatams: IGsapElementParams): Container | Sprite | null {
-		if (elementPatams.type === EGsapTypes.LAYER) {
-			return this.getLayer(elementPatams.name);
-		} else if (elementPatams.type === EGsapTypes.SPRITE) {
-			return this.getSprite(elementPatams.name);
+	public getElement(elementParams: IGsapElementParams): Container | Sprite | null {
+		if (elementParams.type === EGsapTypes.LAYER) {
+			return this.getLayer(elementParams.name);
+		} else if (elementParams.type === EGsapTypes.SPRITE) {
+			return this.getSprite(elementParams.name);
 		}
 		return null;
 	}
 
 	public getTrigger(triggerName: string): any {
 		return { triggerName };
+	}
+	
+	public destroy(){
+		this.animationsData = null;
+		this.layersData = null;
+		this.spritesData = null;
+		this.textures = null;
+		this.sounds = null;
+		this.layers = null;
+		this.sprites = null;
+		this.masksData = null;
 	}
 }

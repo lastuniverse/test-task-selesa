@@ -52,16 +52,17 @@ export class Preloader extends BaseController {
 		this.componentView.stopAnimation();
 	}
 
-	public async initPogressWatcher(): Promise<void> {
+	public async initPogressWatcher(startWatchingLoads: () => void ): Promise<void> {
 		/**
 		 * На финале столкнулся с тем, что PIXI 8 никак не отслеживает глобальный 
 		 * прогресс загрузки, пришлось изобразить весь этот ужас ниже. 
 		 * Пока не вижу как это сделать красиво и быстро для PIXI 8
 		 */
-		let resolver: (value: void | PromiseLike<void>) => void;
-		const promise = new Promise<void>((resolve, _) => {
-			resolver = resolve;
-		});
+
+		const currentAmount = Object.values(Assets.loader.promiseCache).length;
+
+		startWatchingLoads();
+
 		const list = Object.values(Assets.loader.promiseCache);
 		let amount = list.length;
 		let count = 0;
@@ -69,33 +70,17 @@ export class Preloader extends BaseController {
 		const updateProgress = async (promise: Promise<any>) => {
 			await promise;
 			count++;
-			const progress = Math.min(1, count / amount);
-			console.log('custom progress', progress, count, amount)
+			const progress = Math.min(1, (count-currentAmount) / (amount-currentAmount));
+			console.log('custom progress', progress, (count-currentAmount), (amount-currentAmount), count, amount)
 
 			this.progressBar.setProgress(progress);
-			if(count === amount) resolver();
-	
 		}
-
-		list.forEach(async item => {
-			updateProgress(item.promise);
+		
+		const promises = list.map(async item => {
+			return updateProgress(item.promise);
 		});
 
-		const originalPromiseCache = Assets.loader.promiseCache;
-		const proxy = new Proxy(originalPromiseCache, {
-			set(target, prop, value) {
-				if (!(prop in target)) {
-					console.log('Ресурс добавлен:', prop);
-					amount++;
-					updateProgress(value.promise);
-				}
-				return Reflect.set(target, prop, value);
-			}
-		});
-
-		Assets.loader.promiseCache = proxy;
-		await promise;
-		Assets.loader.promiseCache = originalPromiseCache;
+		await Promise.all(promises);
 	}
 
 	public override destroy(): void {
