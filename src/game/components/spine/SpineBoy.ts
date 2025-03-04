@@ -10,7 +10,6 @@ export class SpineBoy {
     }
 
 	async init() {
-		await this.preload();
         this.spine = Spine.from({
             skeleton: "spineSkeleton",
             atlas: "spineAtlas",

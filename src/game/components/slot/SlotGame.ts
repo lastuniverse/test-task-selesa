@@ -26,6 +26,11 @@ export class SlotGame extends BaseSlotGame {
 	private spineBoy!: SpineBoy;
 	private money: Sprite[] = [];
 
+	constructor() {
+		super();
+		this.spineBoy = new SpineBoy();
+	}
+
 	public get view(): Component {
 		return this.componentView;
 	}
@@ -34,6 +39,7 @@ export class SlotGame extends BaseSlotGame {
 		await Promise.all([
 			Assets.load({ alias: "slot", src: "./assets/slot/slot.asset" }),
 			this.reels.preload(),
+			this.spineBoy.preload(),
 		]);
 	}
 
@@ -45,10 +51,10 @@ export class SlotGame extends BaseSlotGame {
 		this.bigWinSound = this.componentView.getSound("big_win_02");
 		this.winCountSound = this.componentView.getSound("win_count");
 		this.ambientMusic = this.componentView.getSound("a_flat_major");
+
 		await super.init();
 		this.componentView.getLayer("reels").addChild(this.reels.view);
 
-		this.spineBoy = new SpineBoy();
 		await this.spineBoy.init();
 		this.componentView.getLayer("spine_boy").addChild(this.spineBoy.view);
 	}
