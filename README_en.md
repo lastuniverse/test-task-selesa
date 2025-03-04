@@ -65,6 +65,8 @@
   - Reel spin mechanics with 2 modes (16 hours)
   - Remaining tasks (12 hours)
 
+- Minor component refinements, fixes, and overall code polishing (additional 3 hours, total 39 hours)
+
 ## A Bit About the Game Architecture and Its Implementation Features
 - Stack: `vite`, `typescript`, `pixi 8`, `gsap`
 - I decided to experiment a bit with the architecture by fully implementing the state management process using `async` and `await`. I believe the experiment turned out to be successful—the logic for scheduling and launching asynchronous components, as well as managing their state transitions, has become significantly simpler. To achieve this, all game controllers inherit from `BaseController`, which has asynchronous `preload` and `init` methods. We follow the rule that all initialization dependent on the results of the `preload` method is done strictly within the `init` method, and we adhere to this rule consistently. This approach allows for intuitive management of component readiness processes and greatly simplifies code comprehension when working with such asynchronous logic (*subjective opinion*).
