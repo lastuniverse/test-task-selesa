@@ -156,6 +156,7 @@ export class SlotGame extends BaseSlotGame {
 	}
 
 	private async playMoneyAnimation(amount: number, duration: number = 1) {
+		// всю эту анимацию можно было вставить внутрь компонента, но оставляю здесь как пример навыка использования gsap
 		const texture = this.componentView.getTexture("money");
 		const layer = this.componentView.getLayer("overlay");
 		const promises = [];
