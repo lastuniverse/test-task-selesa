@@ -31,10 +31,8 @@ export class Game extends BaseGame {
 	}
 
 	private async startLogo() {
-		if (this.logo) {
-			this.app.stage.addChildAt(this.logo.view, 0);
-			this.logo.start();
-		}
+		this.app.stage.addChildAt(this.logo!.view, 0);
+		this.logo!.start();
 
 		this.preloader = new Preloader();
 		await this.preloader.preload();
