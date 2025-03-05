@@ -9,6 +9,7 @@ export class Preloader extends BaseController {
 	private componentView!: Component;
 	private progressBar!: ProgressBar;
 	private music!: HTMLAudioElement;
+	private startAmount: number = 0;
 
 	public get view(): Component {
 		return this.componentView;
@@ -41,6 +42,7 @@ export class Preloader extends BaseController {
 	}
 
 	public override async start(): Promise<void> {
+		this.startAmount = Object.values(Assets.loader.promiseCache).length;
 		Sounds.play(this.music);
 		this.componentView.playAnimation("intro");
 	}
@@ -51,17 +53,7 @@ export class Preloader extends BaseController {
 		this.componentView.stopAnimation();
 	}
 
-	public async startPogressWatcher(startWatchingLoads: () => void ): Promise<void> {
-		/**
-		 * На финале столкнулся с тем, что PIXI 8 никак не отслеживает глобальный 
-		 * прогресс загрузки, пришлось изобразить весь этот ужас ниже. 
-		 * Пока не вижу как это сделать красиво и быстро для PIXI 8
-		 */
-
-		const startAmount = Object.values(Assets.loader.promiseCache).length;
-
-		startWatchingLoads();
-
+	public async startPogressWatcher(): Promise<void> {
 		const list = Object.values(Assets.loader.promiseCache);
 		let amount = list.length;
 		let count = 0;
@@ -70,10 +62,10 @@ export class Preloader extends BaseController {
 			await promise;
 			
 			count++;
-			const progress = Math.max(0,Math.min(1, (count-startAmount) / (amount-startAmount)));
+			const progress = Math.max(0,Math.min(1, (count-this.startAmount) / (amount-this.startAmount)));
 			if(progress===0) return;
 
-			console.log("custom progress", `${(progress * 100).toFixed(0)}%`, (count-startAmount), (amount-startAmount));
+			console.log("custom progress", `${(progress * 100).toFixed(0)}%`, (count-this.startAmount), (amount-this.startAmount));
 
 			this.progressBar.setProgress(progress);
 		}
