@@ -14,7 +14,7 @@ export abstract class BaseGame {
 	protected app!: Application;
 	protected parentContainer!: HTMLElement;
 	protected resizeObserver!: ResizeObserver;
-	private sustemButtons!: SystemButtons;
+	private sustemButtons?: SystemButtons;
 
 	async init(parentElementId: string, pixiOptions: Partial<ApplicationOptions> = {}) {
 		await this.initPixiApp(pixiOptions);
@@ -83,12 +83,12 @@ export abstract class BaseGame {
 	}
 
 	private tabFocus = () => {
-		console.log("Пользователь покинул вкладку");
-		gsap.globalTimeline.pause()
-		gsap.ticker.sleep();
-		this.app.ticker.stop();
-		this.app.stop();
-		Sounds.pauseAll();
+		console.log(`Вкладка активна`);
+		gsap.globalTimeline.resume()
+		gsap.ticker.wake();
+		this.app.ticker.start();
+		this.app.start();
+		Sounds.resumeAll();
 	}
 
 	private setupResizeHandling(): void {
@@ -108,13 +108,13 @@ export abstract class BaseGame {
 			this.app.stage.angle = 0;
 			this.app.stage.x = 0;
 			this.app.stage.y = 0;
-			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
+			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
 		} else {
 			this.app.stage.scale.set(rendererHeight / BaseGame.GAME_WIDTH, rendererWidth / BaseGame.GAME_HEIGHT);
 			this.app.stage.angle = -90;
 			this.app.stage.x = 0;
 			this.app.stage.y = rendererHeight;
-			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
+			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
 		}
 
 		this.updateSystemButtons();
@@ -125,9 +125,9 @@ export abstract class BaseGame {
 		const { clientWidth: width, clientHeight: height } = this.parentContainer;
 		const isLandscape = width > height;
 		if (isLandscape) {
-			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
+			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
 		} else {
-			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
+			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
 		}
 	}
 
@@ -145,7 +145,7 @@ export abstract class BaseGame {
 
 		this.resizeObserver.disconnect();
 		this.resizeObserver.unobserve(this.parentContainer);
-		this.sustemButtons.destroy();
+		this.sustemButtons?.destroy();
 		this.parentContainer.removeChild(this.app.canvas);
 		this.app.destroy(true);
 	}
