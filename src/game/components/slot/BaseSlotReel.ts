@@ -175,7 +175,7 @@ export abstract class BaseSlotReel extends BaseController {
 	private reeelSlotsAnimate = () => {
 		if (this.blur) {
 			const strength = Math.abs(this.position - this.previousPosition);
-			let blur = strength > 1 ?  this.blur.blurY : strength * this.motionBlur;
+			let blur = strength > 1 ? this.blur.blurY : strength * this.motionBlur;
 			this.blur.blurY = blur;
 		}
 
@@ -190,5 +190,9 @@ export abstract class BaseSlotReel extends BaseController {
 	public override destroy(): void {
 		gsap.ticker.remove(this.reeelSlotsAnimate);
 		gsap.ticker.remove(this.reeelAnimate);
+		this.view.filters = [];
+		this.blur?.destroy();
+		this.symbols.forEach(symbol => symbol.destroy());
+		this.symbols = [];
 	}
 }
