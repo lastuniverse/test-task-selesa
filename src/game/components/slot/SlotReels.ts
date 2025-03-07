@@ -38,9 +38,8 @@ export class SlotReels extends BaseSlotReels {
     }
 
     public override destroy(): void {
-        this.reels.forEach(reel => reel.destroy());
+        this.reel.destroy();
         this.componentView.destroy();
-
         super.destroy();
     }
 }

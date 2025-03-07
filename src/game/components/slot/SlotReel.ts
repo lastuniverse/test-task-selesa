@@ -60,6 +60,8 @@ export class SlotReel extends BaseSlotReel {
 		Sounds.stop(this.soundSpinLoop);
 		Sounds.stop(this.soundComplete);
 
+		this.resources.destroy();
+
 		super.destroy();
 	}
 }

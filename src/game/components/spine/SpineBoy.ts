@@ -3,7 +3,7 @@ import { Assets, Container } from "pixi.js";
 
 export class SpineBoy {
 	public readonly view: Container;
-	private spine!: Spine;
+	private spine: Spine | null = null;
 
     constructor(){
 	    this.view = new Container();
@@ -53,12 +53,12 @@ export class SpineBoy {
     }
 
 	public stopAnimation(durarion: number = 0.5) {
-		this.spine.state.setEmptyAnimation(0, durarion);
+		this.spine!.state.setEmptyAnimation(0, durarion);
 	}
 
     public async playAnimation(name: string, loop: boolean = false, timeScale: number = 1) {
         if (this.currentAnimationName === name) return;
-        const trackEntry = this.spine.state.setAnimation(0, name, loop);
+        const trackEntry = this.spine!.state.setAnimation(0, name, loop);
         trackEntry.timeScale = timeScale;
 		if(loop) return;
 		await new Promise<void>((resolve,_)=>{
@@ -67,10 +67,15 @@ export class SpineBoy {
     }
 
     private isAnimationPlaying(name: string) {
-        return this.currentAnimationName === name && !this.spine.state.getCurrent(0)?.isComplete();
+        return this.currentAnimationName === name && !this.spine!.state.getCurrent(0)?.isComplete();
     }
 
     get currentAnimationName() {
-        return this.spine.state.getCurrent(0)?.animation?.name;
+        return this.spine!.state.getCurrent(0)?.animation?.name;
     }
+
+	public destroy(): void{
+		this.spine?.destroy();
+		this.spine = null;
+	}
 }

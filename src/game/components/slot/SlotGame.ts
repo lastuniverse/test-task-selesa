@@ -219,6 +219,8 @@ export class SlotGame extends BaseSlotGame {
 		Sounds.stop(this.winSound);
 		Sounds.stop(this.winCountSound);
 		Sounds.stop(this.bigWinSound);
+
+		this.spineBoy.destroy();
 		this.componentView.destroy();
 
 		super.destroy();

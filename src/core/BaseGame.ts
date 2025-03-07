@@ -63,32 +63,32 @@ export abstract class BaseGame {
 	}
 
 	private setupFocusHandling(): void {
-		this.handleTabChange(document.visibilityState === "hidden");
+		if (document.visibilityState === "hidden") {
+			this.tabBlur();
+		} else {
+			this.tabFocus();
+		}
 
-		window.addEventListener("blur", () => {
-			this.handleTabChange(true);
-		});
-		window.addEventListener("focus", () => {
-			this.handleTabChange(false);
-		});
+		window.addEventListener("blur", this.tabBlur);
+		window.addEventListener("focus", this.tabFocus);
 	}
 
-	private handleTabChange = (isLost: boolean) => {
-		if (isLost) {
-			console.log("Пользователь покинул вкладку");
-			gsap.globalTimeline.pause()
-			gsap.ticker.sleep();
-			this.app.ticker.stop();
-			this.app.stop();
-			Sounds.pauseAll();
-		} else {
-			console.log(`Вкладка активна`);
-			gsap.globalTimeline.resume()
-			gsap.ticker.wake();
-			this.app.ticker.start();
-			this.app.start();
-			Sounds.resumeAll();
-		}
+	private tabBlur = () => {
+		console.log("Пользователь покинул вкладку");
+		gsap.globalTimeline.pause()
+		gsap.ticker.sleep();
+		this.app.ticker.stop();
+		this.app.stop();
+		Sounds.pauseAll();
+	}
+
+	private tabFocus = () => {
+		console.log("Пользователь покинул вкладку");
+		gsap.globalTimeline.pause()
+		gsap.ticker.sleep();
+		this.app.ticker.stop();
+		this.app.stop();
+		Sounds.pauseAll();
 	}
 
 	private setupResizeHandling(): void {
@@ -108,25 +108,26 @@ export abstract class BaseGame {
 			this.app.stage.angle = 0;
 			this.app.stage.x = 0;
 			this.app.stage.y = 0;
-			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
+			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
 		} else {
 			this.app.stage.scale.set(rendererHeight / BaseGame.GAME_WIDTH, rendererWidth / BaseGame.GAME_HEIGHT);
 			this.app.stage.angle = -90;
 			this.app.stage.x = 0;
 			this.app.stage.y = rendererHeight;
-			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
+			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
 		}
+
 		this.updateSystemButtons();
-		this.handleTabChange(false);
+		this.tabFocus();
 	}
 
 	private updateSystemButtons() {
 		const { clientWidth: width, clientHeight: height } = this.parentContainer;
 		const isLandscape = width > height;
 		if (isLandscape) {
-			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
+			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / width, BaseGame.GAME_HEIGHT / height);
 		} else {
-			this.sustemButtons?.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
+			this.sustemButtons.updateResize(BaseGame.GAME_WIDTH / height, BaseGame.GAME_HEIGHT / width);
 		}
 	}
 
@@ -139,8 +140,13 @@ export abstract class BaseGame {
 	}
 
 	public destroy(): void {
+		window.removeEventListener("blur", this.tabBlur);
+		window.removeEventListener("focus", this.tabFocus);
+
 		this.resizeObserver.disconnect();
-		this.app.destroy(true);
+		this.resizeObserver.unobserve(this.parentContainer);
+		this.sustemButtons.destroy();
 		this.parentContainer.removeChild(this.app.canvas);
+		this.app.destroy(true);
 	}
 }
